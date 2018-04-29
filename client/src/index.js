@@ -8,7 +8,7 @@ import promise from "redux-promise";
 import reducers from "./reducers";
 // import reducers from "./reducers";
 import PreviousGamesList from "./containers/PreviousGamesList";
-import CurrentGame from "./containers/CurrentGame";
+import NewGame from "./containers/NewGame";
 import Header from "./components/Header";
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
@@ -16,11 +16,11 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
-        <header>{<Header />} </header>
+        <Header />
         <Switch>
           <Route path="/games/" component={PreviousGamesList} />
           {/*Needs to be after /posts/new since it has the wildcard ":id" condition */}
-          <Route path="/" component={CurrentGame} />
+          <Route path="/" component={NewGame} />
         </Switch>
       </div>
     </BrowserRouter>

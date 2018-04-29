@@ -1,10 +1,10 @@
-export const FETCH_CURRENT_GAME = "fetch_current_game";
+export const ADD_PLAYER = "add_player";
 export const FETCH_PREVIOUS_GAMES = "fetch_previous_games";
 
-export function fetchCurrentGame() {
+export function addPlayer(player) {
   return {
-    type: FETCH_CURRENT_GAME,
-    payload: "this will be current game data"
+    type: ADD_PLAYER,
+    payload: player
   };
 }
 

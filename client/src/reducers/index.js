@@ -1,10 +1,9 @@
 import { combineReducers } from "redux";
 import PreviousGamesReducer from "./PreviousGamesReducer";
-import CurrentGameReducer from "./CurrentGameReducer";
+import CurrentPlayersReducer from "./CurrentPlayersReducer";
 
 const rootReducer = combineReducers({
-  previousGames: PreviousGamesReducer,
-  currentGame: CurrentGameReducer
+  players: CurrentPlayersReducer
 });
 
 export default rootReducer;
