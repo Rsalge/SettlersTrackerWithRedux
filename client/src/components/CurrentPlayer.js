@@ -1,10 +1,12 @@
 import React from "react";
 import _ from "lodash";
 const CurrentPlayer = props => {
+  let headers = Object.keys(props.player);
   return (
     <table>
-      <tr>{}</tr>
-      This is the current player: {props.player.name}
+      <tbody>
+        <tr>{headers.map(header => <th key={header}>{header}</th>)}</tr>
+      </tbody>
     </table>
   );
 };
