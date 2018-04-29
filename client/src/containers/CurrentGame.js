@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-export default class CurrentGame extends Component {
+import { fetchCurrentGame } from "../actions";
+class CurrentGame extends Component {
+  onComponentDidMount() {
+    this.props.fetchCurrentGame();
+  }
   render() {
     return <div>Current Game! </div>;
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-
-//   };
-// }
-// export default connect(
-//   mapStateToProps,
-// )(CurrentGame);
+function mapStateToProps(state) {
+  return {
+    currentGame: state.currentGame
+  };
+}
+export default connect(mapStateToProps, { fetchCurrentGame })(CurrentGame);
