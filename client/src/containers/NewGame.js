@@ -5,8 +5,13 @@ class NewGame extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      player: ""
+      player: "",
+      gameId: ""
     };
+  }
+
+  startGame() {
+    this.props.history.push(`/games/${this.state.gameId}`);
   }
 
   render() {
@@ -34,6 +39,20 @@ class NewGame extends Component {
           this.props.players.map(player => (
             <div key={player.name}> {player.name} </div>
           ))}
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            this.startGame();
+          }}
+        >
+          <input
+            type="text"
+            placeholder="Name your game"
+            value={this.state.gameId}
+            onChange={e => this.setState({ gameId: e.target.value })}
+          />
+          <button type="submit"> Start Game! </button>
+        </form>
       </div>
     );
   }

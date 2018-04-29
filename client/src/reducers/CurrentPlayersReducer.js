@@ -1,5 +1,4 @@
-import { ADD_PLAYER, addPlayer } from "../actions";
-import { WSAETIMEDOUT } from "constants";
+import { ADD_PLAYER } from "../actions";
 
 class Player {
   constructor(name) {
@@ -33,23 +32,18 @@ class Player {
 }
 
 export default function(
-  state = {
-    players: [new Player("Ross"), new Player("AD")],
-    largestArmy: 3,
-    longestRoad: 3,
-    harborMaster: 3
-  },
+  state = [new Player("Ross"), new Player("AD")],
   action
 ) {
   console.log("ACTION", action.type);
   switch (action.type) {
     case ADD_PLAYER:
       const player = new Player(action.payload);
-      return [...state.players, player];
+      return [...state, player];
     // case UPDATE_PLAYER:
     //   //will need to do a decent amount of logic here for updating laingestRoad and the such
     //   return state.players;
     default:
-      return state.players;
+      return state;
   }
 }
