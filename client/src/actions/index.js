@@ -9,9 +9,10 @@ export function addPlayer(player) {
   };
 }
 
-export function fetchPreviousGames() {
+export function fetchGames() {
+  const request = axios.get("/api/");
   return {
     type: FETCH_PREVIOUS_GAMES,
-    payload: "this will be a list of previous games"
+    payload: request
   };
 }

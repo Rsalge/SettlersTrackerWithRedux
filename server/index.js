@@ -13,8 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.use("/api", api);
-
 mongoose.connect(process.env.MONGODB_URI);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -29,6 +27,7 @@ if (!process.env.DEV) {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
   });
 }
+app.use("/api", api);
 
 const port = process.env.PORT || 3001;
 app.listen(port);

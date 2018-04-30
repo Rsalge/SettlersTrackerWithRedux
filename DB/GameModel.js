@@ -34,7 +34,7 @@ const gameSchema = new mongoose.Schema({
 
 const Game = mongoose.model("game", gameSchema);
 
-User.getGames = () => {
+Game.getGames = () => {
   return Game.find({}).exec();
 };
 

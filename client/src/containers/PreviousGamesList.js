@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-export default class PreviousGamesList extends Component {
+import { fetchGames } from "../actions";
+class PreviousGamesList extends Component {
+  componentDidMount() {
+    this.props.fetchGames();
+  }
   render() {
+    console.log("PREVIOUS GAMES", this.props.games);
     return <div> Previous Games! </div>;
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
+function mapStateToProps(state) {
+  return {
+    games: state.games
+  };
+}
 
-//   };
-// }
-
-// export default connect(
-//   mapStateToProps,
-// )(PreviousGamesList);
+export default connect(mapStateToProps, { fetchGames })(PreviousGamesList);
