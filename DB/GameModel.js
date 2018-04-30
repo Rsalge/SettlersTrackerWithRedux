@@ -15,7 +15,8 @@ const gameSchema = new mongoose.Schema({
 
   date: {
     type: Date,
-    required: true
+    required: true,
+    default: Date.now
   },
 
   players: [
@@ -24,28 +25,17 @@ const gameSchema = new mongoose.Schema({
         type: String,
         required: true
       },
-      turns: [
-        {
-          cities: Number,
-          settlements: Number,
-          knights: Number,
-          roadLength: Number,
-          harbors: Number,
-          comment: String,
-          diceRoll: Number
-        }
-      ]
+      turns: Array
     }
   ],
 
   complete: {
     type: Boolean,
-    required: true
+    required: true,
+    default: false
   },
 
-  winner: String,
-
-  diceRolls
+  winner: String
 });
 
 const Game = mongoose.model("game", gameSchema);
