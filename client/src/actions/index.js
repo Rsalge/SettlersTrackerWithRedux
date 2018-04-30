@@ -1,3 +1,4 @@
+import axios from "axios";
 export const ADD_PLAYER = "add_player";
 export const FETCH_PREVIOUS_GAMES = "fetch_previous_games";
 
