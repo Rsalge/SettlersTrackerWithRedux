@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Game } = require("../../DB/GameModel.js");
+const Game = require("../../DB/GameModel.js");
 
 router.get("/", (req, res) => {
   res.send("API Server");

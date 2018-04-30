@@ -10,7 +10,7 @@ export function addPlayer(player) {
 }
 
 export function fetchGames() {
-  const request = axios.get("/api/");
+  const request = axios.get("/api/games");
   return {
     type: FETCH_PREVIOUS_GAMES,
     payload: request
