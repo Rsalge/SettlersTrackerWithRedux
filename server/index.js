@@ -17,6 +17,10 @@ app.use("/api", api);
 
 mongoose.connect(process.env.MONGODB_URI);
 const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", () => {
+  console.log("Database connected!");
+});
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
