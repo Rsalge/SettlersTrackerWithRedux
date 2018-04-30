@@ -5,6 +5,7 @@ class PreviousGamesList extends Component {
   componentDidMount() {
     this.props.fetchGames();
   }
+  //TODO: create a few games and then display them appropriately in a list
   render() {
     console.log("PREVIOUS GAMES", this.props.games);
     return <div> Previous Games! </div>;
