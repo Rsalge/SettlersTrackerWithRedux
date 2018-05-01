@@ -24,6 +24,7 @@ class NewGame extends Component {
           onSubmit={e => {
             e.preventDefault();
             this.props.addPlayer(this.state.player);
+            this.setState({ player: "" });
           }}
         >
           <input
