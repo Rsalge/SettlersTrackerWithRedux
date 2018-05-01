@@ -2,6 +2,7 @@ import axios from "axios";
 export const ADD_PLAYER = "add_player";
 export const FETCH_PREVIOUS_GAMES = "fetch_previous_games";
 export const CREATE_GAME = "create_game";
+export const GET_GAME = "get_game";
 
 export function addPlayer(player) {
   return {
@@ -25,6 +26,15 @@ export function createGame(gameInfo, callback) {
 
   return {
     type: CREATE_GAME,
+    payload: request
+  };
+}
+
+export function fetchGame(id) {
+  const request = axios.get(`/api/game/${id}`);
+
+  return {
+    type: GET_GAME,
     payload: request
   };
 }
