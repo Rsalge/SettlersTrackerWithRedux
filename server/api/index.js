@@ -9,10 +9,9 @@ router.get("/games", (reg, res) => {
   Game.getGames().then(games => res.send({ games }));
 });
 
-router.get("/hello", (req, res) => {
-  res.send({
-    name: "World"
-  });
+router.get("/game/:id", (req, res) => {
+  const id = req.params.id;
+  Game.getGame(id).then(game => res.send({ game }));
 });
 
 module.exports = router;

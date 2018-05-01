@@ -38,6 +38,17 @@ Game.getGames = () => {
   return Game.find({}).exec();
 };
 
+Game.getGame = id => {
+  return Game.findOne({ id }).exec();
+};
+
+Game.createGame = ({ title, players }) => {
+  let game = new Game({ title, players });
+  game.save(err => {
+    if (err) return handleError(err);
+  });
+};
+
 // User.getUserPlaylists = spotifyUserId =>
 //   User.find(
 //     { spotifyId: spotifyUserId },

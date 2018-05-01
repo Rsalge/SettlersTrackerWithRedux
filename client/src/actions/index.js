@@ -31,7 +31,7 @@ export function createGame(gameInfo, callback) {
 }
 
 export function fetchGame(id) {
-  const request = axios.get(`/api/game/${id}`);
+  const request = axios.get(`/api/game`, { params: { id } });
 
   return {
     type: GET_GAME,
