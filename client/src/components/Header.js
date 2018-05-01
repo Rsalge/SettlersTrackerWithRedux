@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Subheader from "./Subheader";
 const Header = () => {
   return (
-    <div>
-      <Link to="/previousGames"> Previous Games </Link>
-      <Link to="/"> Current Game </Link>
+    <div className="header">
+      <h3>Settlers tracker!</h3>
+      <Subheader />
     </div>
   );
 };

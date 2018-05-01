@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addPlayer } from "../actions";
+import AddedPlayers from "../components/AddedPlayers";
 class NewGame extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +18,7 @@ class NewGame extends Component {
   render() {
     console.log("CHECKING REDUX CONNECTION: ", this.props.players);
     return (
-      <div>
+      <div className="NewGame">
         New Game!
         <form
           onSubmit={e => {
@@ -32,13 +33,7 @@ class NewGame extends Component {
           />
           <button type="submit"> Add Player </button>
         </form>
-        {/* <button onClick={this.props.fetchCurrentGame}>
-          Fetch Current Game
-        </button> */}
-        {this.props.players &&
-          this.props.players.map(player => (
-            <div key={player.name}> {player.name} </div>
-          ))}
+        <AddedPlayers players={this.props.players} />
         <form
           onSubmit={e => {
             e.preventDefault();
