@@ -1,5 +1,5 @@
 import { FETCH_PREVIOUS_GAMES } from "../actions";
-import _ from "lodash";
+// import _ from "lodash";
 
 export default function(state = {}, action) {
   switch (action.type) {

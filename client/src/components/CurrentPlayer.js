@@ -1,5 +1,5 @@
 import React from "react";
-import _ from "lodash";
+// import _ from "lodash";
 
 /*this component will need to be a container and have refernce to players in redux state,
 will need to add action creator for UPDATE_PLAYER that will be called once values are cahanged
