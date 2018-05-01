@@ -14,9 +14,9 @@ router.get("/game", (req, res) => {
   Game.getGame(id).then(game => res.send({ game }));
 });
 
-router.get("/createGame", (req, res) => {
-  let gameInfo = req.body;
-  Game.createGame(gameInfo).then(game => res.send(game));
+router.post("/createGame", (req, res) => {
+  console.log("INSIDE OF CREATE GAME ROUTE", req.body);
+  Game.createGame(req.body).then(game => res.send(game));
 });
 
 module.exports = router;

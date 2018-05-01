@@ -43,9 +43,10 @@ Game.getGame = id => {
 };
 
 Game.createGame = ({ title, players }) => {
+  console.log("TITLE: ", title, "\nPLAYERS: ", players);
   let game = new Game({ title, players });
   game.save(err => {
-    if (err) return handleError(err);
+    if (err) return handleError(err); //
   });
 };
 

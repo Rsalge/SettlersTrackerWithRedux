@@ -12,7 +12,10 @@ class NewGame extends Component {
   }
 
   startGame() {
-    let callback = () => this.props.history.push(`/games/${this.state.gameId}`);
+    this.props.createGame(
+      { players: this.props.players, title: this.state.gameId },
+      () => this.props.history.push(`/games/${this.state.gameId}`)
+    );
   }
 
   render() {
