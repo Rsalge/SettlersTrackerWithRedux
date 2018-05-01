@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addPlayer } from "../actions";
+import { addPlayer, createGame } from "../actions";
 import AddedPlayers from "../components/AddedPlayers";
 class NewGame extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class NewGame extends Component {
   }
 
   startGame() {
-    this.props.history.push(`/games/${this.state.gameId}`);
+    let callback = () => this.props.history.push(`/games/${this.state.gameId}`);
   }
 
   render() {
@@ -60,4 +60,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { addPlayer })(NewGame);
+export default connect(mapStateToProps, { addPlayer, createGame })(NewGame);

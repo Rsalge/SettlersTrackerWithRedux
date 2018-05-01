@@ -21,7 +21,7 @@ export function fetchGames() {
 
 export function createGame(gameInfo, callback) {
   const request = axios
-    .post("/api/createGame", gameInfo, callback)
+    .post("/api/createGame", gameInfo)
     .then(() => callback());
 
   return {

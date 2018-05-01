@@ -9,9 +9,14 @@ router.get("/games", (reg, res) => {
   Game.getGames().then(games => res.send({ games }));
 });
 
-router.get("/game/:id", (req, res) => {
+router.get("/game", (req, res) => {
   const id = req.params.id;
   Game.getGame(id).then(game => res.send({ game }));
+});
+
+router.get("/createGame", (req, res) => {
+  let gameInfo = req.body;
+  Game.createGame(gameInfo).then(game => res.send(game));
 });
 
 module.exports = router;
