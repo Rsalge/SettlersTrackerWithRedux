@@ -67,3 +67,23 @@ a:hover {
   padding: 10px;
   height: 50px;
 }
+
+.fieldList {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 50px;
+  width: 100vw;
+  flex-wrap: wrap;
+}
+
+.fieldList > * {
+  flex: 1 1 auto;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.field > input {
+  width: 30px;
+}
