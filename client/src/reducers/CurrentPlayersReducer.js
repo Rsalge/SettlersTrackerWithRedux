@@ -10,9 +10,6 @@ class Player {
     this.harbors = 0;
     this.turnNumber = 1;
     this.diceRoll = 7;
-    this.longestRoad = 0;
-    this.largestArmy = 0;
-    this.harborMaster = 0;
     this.newLand = 0;
   }
   victoryPoints() {

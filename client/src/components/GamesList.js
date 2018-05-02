@@ -5,8 +5,7 @@ const GamesList = ({ games }) => {
     <ul>
       {games.map(game => (
         <li>
-          {" "}
-          <Link to={`/games/${game._id}`}>{game.title}</Link>{" "}
+          <Link to={`/games/${game._id}`}>{game.title}</Link>
         </li>
       ))}
     </ul>

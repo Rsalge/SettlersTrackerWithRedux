@@ -5,7 +5,7 @@ const Subheader = () => {
   return (
     <div className="subheader">
       <Link to="/previousGames"> Previous Games </Link>
-      <Link to="/"> Current Game </Link>
+      <Link to="/"> New Game </Link>
     </div>
   );
 };
