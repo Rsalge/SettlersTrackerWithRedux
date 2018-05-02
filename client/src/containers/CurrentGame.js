@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import CurrentPlayer from "../containers/CurrentPlayer";
 import Player from "../components/Player";
 import { fetchGame } from "../actions";
+import PlayerList from "./PlayerList";
 
 class CurrentGame extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class CurrentGame extends Component {
       <div>
         CURRENT GAME
         <CurrentPlayer />
+        <PlayerList />
       </div>
     );
   }

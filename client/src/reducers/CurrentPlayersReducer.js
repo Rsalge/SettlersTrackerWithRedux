@@ -13,14 +13,7 @@ class Player {
     this.newLand = 0;
   }
   victoryPoints() {
-    return (
-      this.cities * 2 +
-      this.settlements +
-      this.longestRoad +
-      this.harborMaster +
-      this.biggestArmy +
-      this.newLand
-    );
+    return this.cities * 2 + this.settlements + this.newLand;
   }
   addCity() {
     this.cities++;
