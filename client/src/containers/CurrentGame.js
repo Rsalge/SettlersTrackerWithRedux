@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import CurrentPlayer from "../components/CurrentPlayer";
+import CurrentPlayer from "../containers/CurrentPlayer";
 import Player from "../components/Player";
 import { fetchGame } from "../actions";
 
@@ -23,14 +23,7 @@ class CurrentGame extends Component {
     return (
       <div>
         CURRENT GAME
-        <ul>
-          {this.props.game.players.map((player, i) => {
-            if (i === this.state.currentPlayer) {
-              return <CurrentPlayer player={player} />;
-            }
-            return <Player player={player} />;
-          })}
-        </ul>
+        <CurrentPlayer />
       </div>
     );
   }

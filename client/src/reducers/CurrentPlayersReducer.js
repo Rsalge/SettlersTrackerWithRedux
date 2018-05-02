@@ -1,4 +1,4 @@
-import { ADD_PLAYER } from "../actions";
+import { ADD_PLAYER, GET_PLAYER } from "../actions";
 
 class Player {
   constructor(name) {
@@ -40,6 +40,9 @@ export default function(
     // case UPDATE_PLAYER:
     //   //will need to do a decent amount of logic here for updating laingestRoad and the such
     //   return state.players;
+    case GET_PLAYER:
+      return state[action.payload];
+
     default:
       return state;
   }

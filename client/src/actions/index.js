@@ -3,6 +3,7 @@ export const ADD_PLAYER = "add_player";
 export const FETCH_PREVIOUS_GAMES = "fetch_previous_games";
 export const CREATE_GAME = "create_game";
 export const GET_GAME = "get_game";
+export const GET_PLAYER = "get_player";
 
 export function addPlayer(player) {
   return {
@@ -38,5 +39,12 @@ export function fetchGame(id) {
   return {
     type: GET_GAME,
     payload: request
+  };
+}
+
+export function fetchPlayer(player) {
+  return {
+    type: GET_PLAYER,
+    payload: player
   };
 }

@@ -21,9 +21,7 @@ router.get("/game", (req, res) => {
 router.post("/createGame", (req, res) => {
   Game.createGame(req.body)
     .then(game => res.send(game))
-    .catch(err => {
-      console.log("GAME CREATION ERROR", err);
-    });
+    .catch(err => console.log("GAME CREATION ERROR", err));
 });
 
 module.exports = router;
