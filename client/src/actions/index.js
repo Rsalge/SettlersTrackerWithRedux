@@ -20,9 +20,14 @@ export function fetchGames() {
 }
 
 export function createGame(gameInfo, callback) {
-  const request = axios
-    .post("/api/createGame", gameInfo)
-    .then(() => callback());
+  const request = axios.post("/api/createGame", gameInfo).then(gameInfo => {
+    console.log(
+      "\n\n\nHERE IS THE NEWLY CREATED GAME INFO",
+      gameInfo.data._id,
+      "\n\n\n"
+    );
+    callback(gameInfo.data._id);
+  });
 
   return {
     type: CREATE_GAME,

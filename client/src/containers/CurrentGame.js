@@ -10,18 +10,22 @@ class CurrentGame extends Component {
       currentPlayer: 0
     };
   }
+  onComponentDidMount() {
+    //TODO: create action to fetch game from DB
+  }
   render() {
     console.log("PLAYERS PASSED INTO CurrentGame", this.props.players);
     return (
       <div>
-        <ul>
+        CURRENT GAME
+        {/* <ul>
           {this.props.players.map((player, i) => {
             if (i === this.state.currentPlayer) {
               return <CurrentPlayer player={player} />;
             }
             return <Player player={player} />;
           })}
-        </ul>
+        </ul> */}
       </div>
     );
   }
@@ -29,7 +33,7 @@ class CurrentGame extends Component {
 
 function mapStateToProps(state) {
   return {
-    players: state.players
+    game: state.game
   };
 }
 export default connect(mapStateToProps)(CurrentGame);

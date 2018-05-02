@@ -13,15 +13,10 @@ const gameSchema = new mongoose.Schema({
     default: Date.now
   },
 
-  players: [
-    {
-      name: {
-        type: String,
-        required: true
-      },
-      turns: Array
-    }
-  ],
+  players: {
+    type: Array,
+    required: true
+  },
 
   complete: {
     type: Boolean,

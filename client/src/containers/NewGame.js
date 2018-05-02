@@ -7,14 +7,14 @@ class NewGame extends Component {
     super(props);
     this.state = {
       player: "",
-      gameId: ""
+      title: ""
     };
   }
 
   startGame() {
     this.props.createGame(
-      { players: this.props.players, title: this.state.gameId },
-      () => this.props.history.push(`/games/${this.state.gameId}`)
+      { players: this.props.players, title: this.state.title },
+      id => this.props.history.push(`/games/${id}`)
     );
   }
 
@@ -47,8 +47,8 @@ class NewGame extends Component {
           <input
             type="text"
             placeholder="Name your game"
-            value={this.state.gameId}
-            onChange={e => this.setState({ gameId: e.target.value })}
+            value={this.state.title}
+            onChange={e => this.setState({ title: e.target.value })}
           />
           <button type="submit"> Start Game! </button>
         </form>
