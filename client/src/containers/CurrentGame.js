@@ -10,11 +10,13 @@ class CurrentGame extends Component {
       currentPlayer: 0
     };
   }
-  onComponentDidMount() {
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    console.log("GAME ID", id);
     //TODO: create action to fetch game from DB
   }
   render() {
-    console.log("PLAYERS PASSED INTO CurrentGame", this.props.players);
+    console.log("GAME INFO PASSED INTO CurrentGame", this.props.game);
     return (
       <div>
         CURRENT GAME
