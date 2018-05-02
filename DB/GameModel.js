@@ -6,25 +6,40 @@ const gameSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-
   date: {
     type: Date,
     required: true,
     default: Date.now
   },
-
   players: {
     type: Array,
     required: true
   },
-
   complete: {
-    type: Boolean,
-    required: true,
-    default: false
+    status: {
+      type: Boolean,
+      required: true,
+      default: false
+    },
+    winner: {
+      type: String,
+      required: true,
+      default: ""
+    }
   },
-
-  winner: String
+  currentPlayer: { type: Number, required: true, default: 0 },
+  largestArmy: {
+    name: { type: String, default: "" },
+    count: { type: Number, default: 2 }
+  },
+  longestRoad: {
+    name: { type: String, default: "" },
+    count: { type: Number, default: 4 }
+  },
+  harborMaster: {
+    name: { type: String, default: "" },
+    count: { type: Number, default: 2 }
+  }
 });
 
 const Game = mongoose.model("game", gameSchema);
