@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CurrentPlayer from "../components/CurrentPlayer";
 import Player from "../components/Player";
+import { fetchGame } from "../actions";
 
 class CurrentGame extends Component {
   constructor(props) {
@@ -13,21 +14,23 @@ class CurrentGame extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
     console.log("GAME ID", id);
+    this.props.fetchGame(id);
     //TODO: create action to fetch game from DB
   }
   render() {
+    if (!this.props.game.players) return <div> Loading... </div>;
     console.log("GAME INFO PASSED INTO CurrentGame", this.props.game);
     return (
       <div>
         CURRENT GAME
-        {/* <ul>
-          {this.props.players.map((player, i) => {
+        <ul>
+          {this.props.game.players.map((player, i) => {
             if (i === this.state.currentPlayer) {
               return <CurrentPlayer player={player} />;
             }
             return <Player player={player} />;
           })}
-        </ul> */}
+        </ul>
       </div>
     );
   }
@@ -38,4 +41,4 @@ function mapStateToProps(state) {
     game: state.game
   };
 }
-export default connect(mapStateToProps)(CurrentGame);
+export default connect(mapStateToProps, { fetchGame })(CurrentGame);

@@ -10,8 +10,14 @@ router.get("/games", (reg, res) => {
 });
 
 router.get("/game", (req, res) => {
-  const id = req.params.id;
-  Game.getGame(id).then(game => res.send({ game }));
+  const id = req.query.id;
+  console.log("INSIDE /game ROUTE, GAME ID: ", id);
+  Game.getGame(id)
+    .then(game => {
+      console.log("\n\n#################\nGAME INFO: ", game, "\n\n\n");
+      res.send({ game });
+    })
+    .catch(err => console.log("GAME FETCHING ERROR: ", err));
 });
 
 router.post("/createGame", (req, res) => {

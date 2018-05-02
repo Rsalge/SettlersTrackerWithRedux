@@ -34,7 +34,7 @@ Game.getGames = () => {
 };
 
 Game.getGame = id => {
-  return Game.findOne({ id }).exec();
+  return Game.findById({ _id: id }).exec();
 };
 
 Game.createGame = ({ title, players }) => {
