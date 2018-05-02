@@ -5,7 +5,7 @@ export default function(state = {}, action) {
     case CREATE_GAME:
       return action.payload;
     case GET_GAME:
-      return action.payload;
+      return action.payload.data.game;
     default:
       return state;
   }

@@ -18,8 +18,8 @@ class CurrentGame extends Component {
     //TODO: create action to fetch game from DB
   }
   render() {
-    if (!this.props.game.players) return <div> Loading... </div>;
     console.log("GAME INFO PASSED INTO CurrentGame", this.props.game);
+    if (!this.props.game.players) return <div> Loading... </div>;
     return (
       <div>
         CURRENT GAME
