@@ -8,12 +8,14 @@ class Field extends Component {
     };
   }
   render() {
-    return (
-      <div className="field">
-        <h3>{this.props.title}</h3>
-        <input value={this.props.value} />
-      </div>
-    );
+    if (this.props.editable) {
+      return (
+        <div className="field">
+          <h3>{this.props.title}</h3>
+          <input value={this.props.value} />
+        </div>
+      );
+    }
   }
 }
 
