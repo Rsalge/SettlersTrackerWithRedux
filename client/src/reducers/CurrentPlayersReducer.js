@@ -1,4 +1,4 @@
-import { ADD_PLAYER, GET_PLAYER } from "../actions";
+import { ADD_PLAYER, GET_PLAYER, CHANGE_FIELD } from "../actions";
 
 class Player {
   constructor(name) {
@@ -25,7 +25,6 @@ export default function(
   state = [new Player("Ross"), new Player("AD")],
   action
 ) {
-  console.log("ACTION", action.type);
   switch (action.type) {
     case ADD_PLAYER:
       const player = new Player(action.payload);
@@ -35,7 +34,13 @@ export default function(
     //   return state.players;
     case GET_PLAYER:
       return state[action.payload];
-
+    case CHANGE_FIELD:
+      console.log("CHANGE_FIELD: ", action.payload);
+      let newState = state.slice();
+      newState[action.payload.player][action.payload.field] +=
+        action.payload.value;
+      console.log("newState", newState);
+      return newState;
     default:
       return state;
   }

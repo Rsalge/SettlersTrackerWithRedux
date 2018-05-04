@@ -20,7 +20,8 @@ class CurrentGame extends Component {
   }
   render() {
     console.log("GAME INFO PASSED INTO CurrentGame", this.props.game);
-    if (!this.props.game.players) return <div> Loading... </div>;
+    if (!this.props.game || !this.props.game.players)
+      return <div> Loading... </div>;
     return (
       <div>
         CURRENT GAME

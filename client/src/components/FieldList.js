@@ -18,6 +18,9 @@ const FieldList = props => {
             />
           );
       })}
+      <div className="field">
+        <button>Submit</button>
+      </div>
     </div>
   );
 };

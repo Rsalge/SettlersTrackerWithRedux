@@ -4,6 +4,7 @@ export const FETCH_PREVIOUS_GAMES = "fetch_previous_games";
 export const CREATE_GAME = "create_game";
 export const GET_GAME = "get_game";
 export const GET_PLAYER = "get_player";
+export const CHANGE_FIELD = "change_field";
 
 export function addPlayer(player) {
   return {
@@ -46,5 +47,13 @@ export function fetchPlayer(player) {
   return {
     type: GET_PLAYER,
     payload: player
+  };
+}
+
+export function changeField(fieldOptions) {
+  console.log("CHANGE FIELD ACTION");
+  return {
+    type: CHANGE_FIELD,
+    payload: fieldOptions
   };
 }

@@ -1,22 +1,40 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
+import { changeField } from "../actions";
 class Field extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: 0
-    };
+  handleClick(value) {
+    console.log("CLICKED: ", value);
+    this.props.changeField({
+      player: this.props.game.currentPlayer,
+      field: this.props.title,
+      value
+    });
   }
   render() {
     if (this.props.editable) {
       return (
         <div className="field">
           <h3>{this.props.title}</h3>
-          <input value={this.props.value} />
+          <button onClick={this.handleClick.bind(this, 1)}>Up</button>
+          <p>{this.props.value}</p>
+          <button onClick={this.handleClick.bind(this, -1)}>Down</button>
+        </div>
+      );
+    } else {
+      return (
+        <div className="field">
+          <h3>{this.props.title}</h3>
+          <p>{this.props.value}</p>
         </div>
       );
     }
   }
 }
 
-export default Field;
+function mapStateToProps(state) {
+  return {
+    game: state.game
+  };
+}
+
+export default connect(mapStateToProps, { changeField })(Field);
