@@ -16,14 +16,14 @@ const gameSchema = new mongoose.Schema({
     required: true
   },
   complete: {
-    status: {
+    staus: {
       type: Boolean,
       required: true,
       default: false
     },
     winner: {
       type: String,
-      required: true,
+      rewquired: true,
       default: ""
     }
   },
@@ -56,13 +56,7 @@ Game.createGame = ({ title, players }) => {
   console.log("TITLE: ", title, "\nPLAYERS: ", players);
   let game = new Game({ title, players });
   let error = false;
-  game.save(err => {
-    if (err) error = err;
-  });
-  return new Promise((resolve, reject) => {
-    if (error) reject(error);
-    resolve(game);
-  });
+  return game.save();
 };
 
 module.exports = Game;

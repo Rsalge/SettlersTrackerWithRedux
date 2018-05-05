@@ -21,7 +21,15 @@ router.get("/game", (req, res) => {
 router.post("/createGame", (req, res) => {
   Game.createGame(req.body)
     .then(game => res.send(game))
-    .catch(err => console.log("GAME CREATION ERROR", err));
+    .catch(err => {
+      console.log("GAME CREATION ERROR", err.code);
+      if (err.code === 11000) {
+        res
+          .status(409)
+          .send({ error: "Game title exists, please try a new title" });
+      }
+      res.sendStatus;
+    });
 });
 
 module.exports = router;

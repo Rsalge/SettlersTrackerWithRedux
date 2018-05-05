@@ -19,7 +19,7 @@ class NewGame extends Component {
   }
 
   render() {
-    console.log("CHECKING REDUX CONNECTION: ", this.props.players);
+    console.log("GAME INFO INSIDE OF NEW GAME", this.props.game);
     return (
       <div className="NewGame">
         New Game!
@@ -52,6 +52,7 @@ class NewGame extends Component {
           />
           <button type="submit"> Start Game! </button>
         </form>
+        {this.props.game.error}
       </div>
     );
   }
@@ -59,7 +60,8 @@ class NewGame extends Component {
 
 function mapStateToProps(state) {
   return {
-    players: state.players
+    players: state.players,
+    game: state.game
   };
 }
 

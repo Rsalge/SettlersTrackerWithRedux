@@ -22,10 +22,13 @@ export function fetchGames() {
 }
 
 export function createGame(gameInfo, callback) {
-  const request = axios.post("/api/createGame", gameInfo).then(gameInfo => {
-    callback(gameInfo.data._id); //passing in the id of the game for React Router navigation
-    return gameInfo;
-  });
+  const request = axios
+    .post("/api/createGame", gameInfo)
+    .then(gameInfo => {
+      callback(gameInfo.data._id); //passing in the id of the game for React Router navigation
+      return gameInfo;
+    })
+    .catch(error => error);
 
   return {
     type: CREATE_GAME,
