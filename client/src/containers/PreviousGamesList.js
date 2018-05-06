@@ -10,7 +10,7 @@ class PreviousGamesList extends Component {
   render() {
     if (!this.props.games) {
       return <h3> Loading...</h3>;
-    } else if (this.props.games["games"].length === 0) {
+    } else if (this.props.games.length === 0) {
       return <h3> No previous games to view</h3>;
     }
     console.log("PREVIOUS GAMES", this.props.games);
