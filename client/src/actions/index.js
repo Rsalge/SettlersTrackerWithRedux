@@ -3,8 +3,9 @@ export const ADD_PLAYER = "add_player";
 export const FETCH_PREVIOUS_GAMES = "fetch_previous_games";
 export const CREATE_GAME = "create_game";
 export const GET_GAME = "get_game";
-export const GET_PLAYER = "get_player";
+export const GET_PLAYERS = "get_players";
 export const CHANGE_FIELD = "change_field";
+export const NEXT_TURN = "next_turn";
 
 export function addPlayer(player) {
   return {
@@ -46,10 +47,11 @@ export function fetchGame(title) {
   };
 }
 
-export function fetchPlayer(player) {
+export function fetchPlayers(title) {
+  let request = axios.get("/api/players", { params: { title } });
   return {
-    type: GET_PLAYER,
-    payload: player
+    type: GET_PLAYERS,
+    payload: request
   };
 }
 
@@ -58,5 +60,12 @@ export function changeField(fieldOptions) {
   return {
     type: CHANGE_FIELD,
     payload: fieldOptions
+  };
+}
+
+export function nextTurn() {
+  return {
+    type: NEXT_TURN,
+    payload: true
   };
 }
