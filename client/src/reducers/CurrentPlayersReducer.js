@@ -1,4 +1,4 @@
-import { ADD_PLAYER, GET_PLAYERS, CHANGE_FIELD } from "../actions";
+import { ADD_PLAYER, GET_PLAYERS, CHANGE_FIELD, TURN_ERROR } from "../actions";
 
 class Player {
   constructor(name) {

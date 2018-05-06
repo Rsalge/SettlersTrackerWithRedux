@@ -3,7 +3,6 @@ import Field from "./Field";
 import NextTurn from "../containers/NextTurn";
 
 const FieldList = props => {
-  console.log("FIELDLIST PROPS: ", props.player);
   const VP = victoryPoints(props.player);
   return (
     <div className="fieldList">

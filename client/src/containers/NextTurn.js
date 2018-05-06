@@ -7,10 +7,12 @@ class NextTurn extends Component {
     //action creator here
   }
   render() {
-    console.log("SUBMIT GAME");
+    let turns = this.props.players;
+    let game = this.props.game;
+    game.players = turns;
     return (
       <div className="submitTurn">
-        <button onClick={() => this.props.nextTurn()}>Submit</button>
+        <button onClick={() => this.props.nextTurn({ game })}>Submit</button>
       </div>
     );
   }

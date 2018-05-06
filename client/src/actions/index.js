@@ -6,6 +6,7 @@ export const GET_GAME = "get_game";
 export const GET_PLAYERS = "get_players";
 export const CHANGE_FIELD = "change_field";
 export const NEXT_TURN = "next_turn";
+export const TURN_ERROR = "turn_error";
 
 export function addPlayer(player) {
   return {
@@ -63,9 +64,27 @@ export function changeField(fieldOptions) {
   };
 }
 
-export function nextTurn() {
+export function nextTurn(data) {
+  console.log("INFO SENT TO nextTurn: ", data.game);
+  let game = data.game;
+  let playerCount = game.players.length;
+  let nextPlayer = game.currentPlayer + 1;
+  if (nextPlayer >= playerCount) {
+    nextPlayer = 0;
+  }
+  game.currentPlayer = nextPlayer;
+  console.log("UPDATED GAME INFO SENT TO BE SAVED: ", game);
+
+  let request = axios
+    .post("/api/saveTurn", game) //{turns, title, }
+    .then(game => {
+      return game.data;
+    })
+    .catch(err => {
+      return err;
+    });
   return {
     type: NEXT_TURN,
-    payload: true
+    payload: request
   };
 }

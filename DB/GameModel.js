@@ -67,4 +67,10 @@ Game.getPlayers = title => {
   return Game.findOne({ title }).exec();
 };
 
+Game.saveTurn = data => {
+  console.log("INSIDE SAVE TURN: ", data);
+
+  return Game.findOneAndUpdate({ title: data.title }, { $set: data }).exec();
+};
+
 module.exports = Game;

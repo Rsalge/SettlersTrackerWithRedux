@@ -34,7 +34,6 @@ router.post("/createGame", (req, res) => {
 
 router.get("/players", (req, res) => {
   const title = req.query.title;
-  console.log("GAME TITLE in /players endpoint: ", title);
   Game.getPlayers(title)
     .then(game => {
       console.log("PLAYER INFORMATION: ", game.players);
@@ -43,6 +42,18 @@ router.get("/players", (req, res) => {
     .catch(err => {
       console.log("GAME FETCHING ERROR: ", err);
       res.status(404).send({ error: " get(/player) error" });
+    });
+});
+
+router.post("/saveTurn", (req, res) => {
+  console.log("IN /saveTurn: ", req.body);
+  Game.saveTurn(req.body)
+    .then(data => {
+      console.log("SUCCESSFULLY SAVED TURN: ", data);
+      res.status(200).send(data);
+    })
+    .catch(err => {
+      res.status(501).send({ message: err });
     });
 });
 
