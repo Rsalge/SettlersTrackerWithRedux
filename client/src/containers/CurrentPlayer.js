@@ -1,10 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchPlayer } from "../actions";
+import { fetchPlayers } from "../actions";
 import FieldList from "../components/FieldList";
 class CurrentPlayer extends Component {
+  componentDidMount() {
+    console.log("GAME TITLE IN CurrentPlayer:", this.props.game.title);
+    this.props.fetchPlayers(this.props.game.title);
+  }
   render() {
-    if (!this.props.players) return <div>Loading current player stats</div>;
+    console.log("CurrentPlayer RECIEVED PLAYERS: ", this.props.players);
+    if (!this.props.players || this.props.players.length === 0)
+      return <div>Loading current player stats</div>;
     const player = this.props.players[this.props.game.currentPlayer];
     const fields = Object.keys(player);
 
@@ -22,4 +28,4 @@ function mapStateToProps(state) {
     game: state.game
   };
 }
-export default connect(mapStateToProps, { fetchPlayer })(CurrentPlayer);
+export default connect(mapStateToProps, { fetchPlayers })(CurrentPlayer);

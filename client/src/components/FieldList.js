@@ -1,8 +1,10 @@
 import React from "react";
 import Field from "./Field";
+import NextTurn from "../containers/NextTurn";
 
 const FieldList = props => {
-  const VP = props.player.victoryPoints();
+  console.log("FIELDLIST PROPS: ", props.player);
+  const VP = victoryPoints(props.player);
   return (
     <div className="fieldList">
       <Field leading={true} key="name" title={props.player.name} />
@@ -24,12 +26,17 @@ const FieldList = props => {
           );
       })}
       {props.editable && (
-        <div className="submitTurn">
-          <button>Submit</button>
-        </div>
+        <NextTurn />
+        // <div className="submitTurn">
+        //   <button>Submit</button>
+        // </div>
       )}
     </div>
   );
+};
+
+const victoryPoints = player => {
+  return player.settlements + player.cities * 2 + player.newLand;
 };
 
 export default FieldList;

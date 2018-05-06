@@ -1,4 +1,4 @@
-import { ADD_PLAYER, GET_PLAYER, CHANGE_FIELD } from "../actions";
+import { ADD_PLAYER, GET_PLAYERS, CHANGE_FIELD } from "../actions";
 
 class Player {
   constructor(name) {
@@ -12,19 +12,9 @@ class Player {
     this.diceRoll = 7;
     this.newLand = 0;
   }
-  victoryPoints() {
-    return this.cities * 2 + this.settlements + this.newLand;
-  }
-  addCity() {
-    this.cities++;
-    this.settlements--;
-  }
 }
 
-export default function(
-  state = [new Player("Ross"), new Player("AD")],
-  action
-) {
+export default function(state = [], action) {
   switch (action.type) {
     case ADD_PLAYER:
       const player = new Player(action.payload);
@@ -32,8 +22,8 @@ export default function(
     // case UPDATE_PLAYER:
     //   //will need to do a decent amount of logic here for updating laingestRoad and the such
     //   return state.players;
-    case GET_PLAYER:
-      return state[action.payload];
+    case GET_PLAYERS:
+      return action.payload.data.players;
     case CHANGE_FIELD:
       console.log("CHANGE_FIELD: ", action.payload);
       let newState = state.slice();

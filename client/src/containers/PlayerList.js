@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import Player from "./Player";
 
 class PlayerList extends Component {
+  // componentDidMount() {
+  //   this.props.fetchPlayers(this.props.game.title);
+  // }
   render() {
     console.log("PLAYER LIST", this.props.players);
     return (

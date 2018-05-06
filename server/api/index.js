@@ -32,4 +32,18 @@ router.post("/createGame", (req, res) => {
     });
 });
 
+router.get("/players", (req, res) => {
+  const title = req.query.title;
+  console.log("GAME TITLE in /players endpoint: ", title);
+  Game.getPlayers(title)
+    .then(game => {
+      console.log("PLAYER INFORMATION: ", game.players);
+      res.send({ players: game.players });
+    })
+    .catch(err => {
+      console.log("GAME FETCHING ERROR: ", err);
+      res.status(404).send({ error: " get(/player) error" });
+    });
+});
+
 module.exports = router;
