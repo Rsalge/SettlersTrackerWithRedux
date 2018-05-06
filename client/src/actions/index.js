@@ -25,7 +25,7 @@ export function createGame(gameInfo, callback) {
   const request = axios
     .post("/api/createGame", gameInfo)
     .then(gameInfo => {
-      callback(gameInfo.data._id); //passing in the id of the game for React Router navigation
+      callback(gameInfo.data.title); //passing in the id of the game for React Router navigation
       return gameInfo;
     })
     .catch(error => error);
@@ -36,9 +36,9 @@ export function createGame(gameInfo, callback) {
   };
 }
 
-export function fetchGame(id) {
-  console.log("ID PASSES INTO fetchGame ACTION: ", id);
-  const request = axios.get(`/api/game`, { params: { id } });
+export function fetchGame(title) {
+  console.log("ID PASSES INTO fetchGame ACTION: ", title);
+  const request = axios.get(`/api/game`, { params: { title } });
 
   return {
     type: GET_GAME,

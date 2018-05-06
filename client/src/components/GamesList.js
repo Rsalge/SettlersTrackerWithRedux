@@ -5,7 +5,7 @@ const GamesList = ({ games }) => {
     <ul className="gameList">
       {games.map(game => (
         <li>
-          <Link to={`/games/${game._id}`}>{game.title}</Link>
+          <Link to={`/games/${game.title}`}>{game.title}</Link>
         </li>
       ))}
     </ul>

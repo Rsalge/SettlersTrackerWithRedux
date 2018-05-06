@@ -10,8 +10,8 @@ router.get("/games", (reg, res) => {
 });
 
 router.get("/game", (req, res) => {
-  const id = req.query.id;
-  Game.getGame(id)
+  const title = req.query.title;
+  Game.getGame(title)
     .then(game => {
       res.send({ game });
     })

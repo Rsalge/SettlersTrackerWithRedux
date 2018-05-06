@@ -19,20 +19,6 @@ class NewGame extends Component {
       <div className="NewGame">
         New Game!
         <AddPlayer />
-        {/* <form
-          onSubmit={e => {
-            e.preventDefault();
-            this.props.addPlayer(this.state.player);
-            this.setState({ player: "" });
-          }}
-        >
-          <input
-            type="text"
-            value={this.state.player}
-            onChange={e => this.setState({ player: e.target.value })}
-          />
-          <button type="submit"> Add Player </button>
-        </form> */}
         <AddedPlayers players={this.props.players} />
         <StartGame history={this.props.history} />
         {this.props.game.error}
