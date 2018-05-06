@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addPlayer, createGame } from "../actions";
 import AddedPlayers from "../components/AddedPlayers";
+import StartGame from "./StartGame";
 class NewGame extends Component {
   constructor(props) {
     super(props);
@@ -9,13 +10,6 @@ class NewGame extends Component {
       player: "",
       title: ""
     };
-  }
-
-  startGame() {
-    this.props.createGame(
-      { players: this.props.players, title: this.state.title },
-      id => this.props.history.push(`/games/${id}`)
-    );
   }
 
   render() {
@@ -38,7 +32,8 @@ class NewGame extends Component {
           <button type="submit"> Add Player </button>
         </form>
         <AddedPlayers players={this.props.players} />
-        <form
+        <StartGame history={this.props.history} />
+        {/* <form
           onSubmit={e => {
             e.preventDefault();
             this.startGame();
@@ -51,7 +46,7 @@ class NewGame extends Component {
             onChange={e => this.setState({ title: e.target.value })}
           />
           <button type="submit"> Start Game! </button>
-        </form>
+        </form> */}
         {this.props.game.error}
       </div>
     );
