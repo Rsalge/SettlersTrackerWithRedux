@@ -27,6 +27,10 @@ const gameSchema = new mongoose.Schema({
       default: ""
     }
   },
+  pastTurns: {
+    type: Array,
+    required: true
+  },
   currentPlayer: { type: Number, required: true, default: 0 },
   largestArmy: {
     name: { type: String, default: "" },
@@ -57,6 +61,10 @@ Game.createGame = ({ title, players }) => {
   let game = new Game({ title, players });
   let error = false;
   return game.save();
+};
+
+Game.getPlayers = title => {
+  return Game.findOne({ title }).exec();
 };
 
 module.exports = Game;
