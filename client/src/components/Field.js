@@ -20,6 +20,12 @@ class Field extends Component {
           <button onClick={this.handleClick.bind(this, -1)}>Down</button>
         </div>
       );
+    } else if (this.props.leading) {
+      return (
+        <div className="leadingField">
+          <h1>{this.props.title}</h1>
+        </div>
+      );
     } else {
       return (
         <div className="field">

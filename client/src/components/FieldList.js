@@ -2,25 +2,32 @@ import React from "react";
 import Field from "./Field";
 
 const FieldList = props => {
-  const fields = Object.keys(props.player);
   const VP = props.player.victoryPoints();
   return (
     <div className="fieldList">
-      <Field key="VP" title="Victory Points" editable={false} value={VP} />
-      {fields.map(field => {
-        if (field !== "name")
+      <Field leading={true} key="name" title={props.player.name} />
+      <Field key="VP" title="Victory Points" value={VP} />
+      <Field
+        key="turnNumber"
+        title="Turn Number"
+        value={props.player.turnNumber}
+      />
+      {props.fields.map(field => {
+        if (field !== "name" && field !== "turnNumber")
           return (
             <Field
               key={field}
               title={field}
-              editable={true}
+              editable={props.editable}
               value={props.player[field]}
             />
           );
       })}
-      <div className="field">
-        <button>Submit</button>
-      </div>
+      {props.editable && (
+        <div className="submitTurn">
+          <button>Submit</button>
+        </div>
+      )}
     </div>
   );
 };

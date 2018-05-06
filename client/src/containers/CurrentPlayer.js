@@ -6,10 +6,11 @@ class CurrentPlayer extends Component {
   render() {
     if (!this.props.players) return <div>Loading current player stats</div>;
     const player = this.props.players[this.props.game.currentPlayer];
+    const fields = Object.keys(player);
+
     return (
       <div className="currentPlayer">
-        {player.name}
-        <FieldList player={player} />
+        <FieldList player={player} fields={fields} editable={true} />
       </div>
     );
   }

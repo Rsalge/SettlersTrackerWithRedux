@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import CurrentPlayer from "../containers/CurrentPlayer";
-import Player from "../components/Player";
 import { fetchGame } from "../actions";
 import PlayerList from "./PlayerList";
 

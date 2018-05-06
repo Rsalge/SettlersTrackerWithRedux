@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Player from "../components/Player";
+import Player from "./Player";
 
 class PlayerList extends Component {
   render() {
@@ -9,7 +9,7 @@ class PlayerList extends Component {
       <div>
         {this.props.players.map((player, i) => {
           if (i !== this.props.game.currentPlayer) {
-            return <Player key={player.name} player={player} />;
+            return <Player key={player.name} player={player} index={i} />;
           }
         })}
       </div>
