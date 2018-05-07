@@ -10,7 +10,7 @@ export default function(state = {}, action) {
     case GET_GAME:
       return action.payload.data.game;
     case NEXT_TURN:
-      console.log("NEXT_TURN payload: ", action.payload);
+      console.log("NEXT_TURN payload: ", action.payload.message);
       //TODO: Handle Async issue with saving to DB
       return action.payload;
     case TURN_ERROR:

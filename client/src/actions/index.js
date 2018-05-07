@@ -68,7 +68,11 @@ export function nextTurn(data) {
   console.log("INFO SENT TO nextTurn: ", data.game);
   let game = data.game;
   let playerCount = game.players.length;
-  let nextPlayer = game.currentPlayer + 1;
+  let curPlayerIndex = game.currentPlayer;
+  let curPlayer = game.players[curPlayerIndex];
+  game.pastTurns.push(curPlayer);
+  curPlayer.turnNumber++;
+  let nextPlayer = curPlayerIndex + 1;
   if (nextPlayer >= playerCount) {
     nextPlayer = 0;
   }

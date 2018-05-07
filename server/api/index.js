@@ -53,6 +53,7 @@ router.put("/saveTurn", (req, res) => {
       res.status(200).send(req.body);
     })
     .catch(err => {
+      console.log("SAVE TURN ERROR: ", err);
       res.status(501).send({ message: err });
     });
 });
