@@ -7,6 +7,7 @@ const Subheader = () => {
       <Link to="/"> Home </Link>
       <Link to="/newGame"> New Game </Link>
       <Link to="/previousGames"> Previous Games </Link>
+      <Link to="/rules"> Rules </Link>
     </div>
   );
 };

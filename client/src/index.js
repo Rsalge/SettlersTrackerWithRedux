@@ -12,6 +12,8 @@ import NewGame from "./containers/NewGame";
 import Header from "./components/Header";
 import CurrentGame from "./containers/CurrentGame";
 import Home from "./components/Home";
+import StandardRules from "./components/StandardRules";
+import Rules from "./components/Rules";
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 ReactDOM.render(
@@ -24,6 +26,8 @@ ReactDOM.render(
           <Route path="/previousGames/" component={PreviousGamesList} />
           {/*Needs to be after /posts/new since it has the wildcard ":id" condition */}
           <Route path="/newGame" component={NewGame} />
+          <Route path="/rules/standard" component={StandardRules} />
+          <Route path="/rules" component={Rules} />
           <Route path="/" component={Home} />
         </Switch>
       </div>
