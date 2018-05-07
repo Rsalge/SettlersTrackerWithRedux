@@ -7,6 +7,7 @@ export const GET_PLAYERS = "get_players";
 export const CHANGE_FIELD = "change_field";
 export const NEXT_TURN = "next_turn";
 export const TURN_ERROR = "turn_error";
+export const MOVE_PLAYER = "move_player";
 
 export function addPlayer(player) {
   return {
@@ -90,5 +91,12 @@ export function nextTurn(data) {
   return {
     type: NEXT_TURN,
     payload: request
+  };
+}
+
+export function movePlayer(i, dir) {
+  return {
+    type: MOVE_PLAYER,
+    payload: { i, dir }
   };
 }

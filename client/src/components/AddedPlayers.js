@@ -1,17 +1,35 @@
-import React from "react";
-
-const AddedPlayers = ({ players }) => {
-  if (!players) {
-    return <div>Add at least 3 players to get started!</div>;
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { movePlayer } from "../actions";
+class AddedPlayers extends Component {
+  handleMove(i, dir) {
+    this.props.movePlayer(i, dir);
   }
-  return (
-    <div>
-      {players.map(player => <div key={player.name}> {player.name} </div>)}
-    </div>
-  );
-};
+  render() {
+    if (!this.props.players) {
+      return <div>Add at least 3 players to get started!</div>;
+    }
 
-export default AddedPlayers;
+    return (
+      <div>
+        {this.props.players.map((player, i) => (
+          <div key={player.name}>
+            <div>{player.name}</div>
+            <button onClick={() => this.handleMove(i, 1)}>Down </button>
+            <button onClick={() => this.handleMove(i, -1)}>Up </button>
+          </div>
+        ))}
+      </div>
+    );
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    players: state.players
+  };
+}
+export default connect(mapStateToProps, { movePlayer })(AddedPlayers);
 
 // if(!players){
 //   return  <div> Please Add players </div>

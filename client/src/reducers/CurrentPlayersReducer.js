@@ -1,4 +1,10 @@
-import { ADD_PLAYER, GET_PLAYERS, CHANGE_FIELD, TURN_ERROR } from "../actions";
+import {
+  ADD_PLAYER,
+  GET_PLAYERS,
+  CHANGE_FIELD,
+  TURN_ERROR,
+  MOVE_PLAYER
+} from "../actions";
 
 class Player {
   constructor(name) {
@@ -19,9 +25,18 @@ export default function(state = [], action) {
     case ADD_PLAYER:
       const player = new Player(action.payload);
       return [...state, player];
-    // case UPDATE_PLAYER:
-    //   //will need to do a decent amount of logic here for updating laingestRoad and the such
-    //   return state.players;
+    case MOVE_PLAYER:
+      //will need to do a decent amount of logic here for updating laingestRoad and the such
+      let newPlayers = state.slice();
+      let { i, dir } = action.payload;
+      let newIndex = i + dir;
+      if (newIndex >= 0 && newIndex < newPlayers.length) {
+        [newPlayers[i], newPlayers[i + dir]] = [
+          newPlayers[i + dir],
+          newPlayers[i]
+        ];
+      }
+      return newPlayers;
     case GET_PLAYERS:
       return action.payload.data.players;
     case CHANGE_FIELD:
