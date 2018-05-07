@@ -76,7 +76,7 @@ export function nextTurn(data) {
   console.log("UPDATED GAME INFO SENT TO BE SAVED: ", game);
 
   let request = axios
-    .post("/api/saveTurn", game) //{turns, title, }
+    .put("/api/saveTurn", game) //{turns, title, }
     .then(game => {
       return game.data;
     })

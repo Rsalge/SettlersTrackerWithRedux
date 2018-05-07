@@ -36,7 +36,7 @@ router.get("/players", (req, res) => {
   const title = req.query.title;
   Game.getPlayers(title)
     .then(game => {
-      console.log("PLAYER INFORMATION: ", game.players);
+      // console.log("PLAYER INFORMATION: ", game.players);
       res.send({ players: game.players });
     })
     .catch(err => {
@@ -45,12 +45,12 @@ router.get("/players", (req, res) => {
     });
 });
 
-router.post("/saveTurn", (req, res) => {
+router.put("/saveTurn", (req, res) => {
   console.log("IN /saveTurn: ", req.body);
   Game.saveTurn(req.body)
     .then(data => {
       console.log("SUCCESSFULLY SAVED TURN: ", data);
-      res.status(200).send(data);
+      res.status(200).send(req.body);
     })
     .catch(err => {
       res.status(501).send({ message: err });
