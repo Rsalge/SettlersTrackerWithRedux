@@ -1,18 +1,14 @@
 import React from "react";
-import Field from "./Field";
 import NextTurn from "../containers/NextTurn";
+import Field from "../containers/Field";
 
 const FieldList = props => {
   const VP = victoryPoints(props.player);
   return (
     <div className="fieldList">
       <Field leading={true} key="name" title={props.player.name} />
-      <Field key="VP" title="Victory Points" value={VP} />
-      <Field
-        key="turnNumber"
-        title="Turn Number"
-        value={props.player.turnNumber}
-      />
+      <Field key="VP" title="VPs" value={VP} />
+      <Field key="turnNumber" title="Turn" value={props.player.turnNumber} />
       {props.fields.map(field => {
         if (field !== "name" && field !== "turnNumber")
           return (
@@ -24,12 +20,7 @@ const FieldList = props => {
             />
           );
       })}
-      {props.editable && (
-        <NextTurn />
-        // <div className="submitTurn">
-        //   <button>Submit</button>
-        // </div>
-      )}
+      {props.editable && <NextTurn />}
     </div>
   );
 };
