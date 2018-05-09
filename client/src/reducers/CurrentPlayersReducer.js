@@ -3,7 +3,8 @@ import {
   GET_PLAYERS,
   CHANGE_FIELD,
   TURN_ERROR,
-  MOVE_PLAYER
+  MOVE_PLAYER,
+  REMOVE_PLAYER
 } from "../actions";
 import _ from "lodash";
 class Player {
@@ -47,6 +48,17 @@ export default function(state = [], action) {
         ];
       }
       return newPlayers;
+    case REMOVE_PLAYER:
+      let removePlayer = state.slice();
+      console.log(
+        "PLAYERS BEFORE REMOVE",
+        removePlayer,
+        "\n index: ",
+        action.payload
+      );
+      removePlayer.splice(action.payload, 1);
+      console.log("PLAYERS AFTER REMOVE", removePlayer);
+      return removePlayer;
     case GET_PLAYERS:
       return action.payload.data.players;
     case CHANGE_FIELD:

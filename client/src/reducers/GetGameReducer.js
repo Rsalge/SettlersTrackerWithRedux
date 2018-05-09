@@ -11,7 +11,6 @@ export default function(state = {}, action) {
       return action.payload.data.game;
     case NEXT_TURN:
       console.log("NEXT_TURN payload: ", action.payload.message);
-      //TODO: Handle Async issue with saving to DB
       return action.payload;
     case TURN_ERROR:
       //TODO: Handle error events here

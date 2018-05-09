@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { movePlayer } from "../actions";
+import { movePlayer, removePlayer } from "../actions";
 class AddedPlayers extends Component {
   handleMove(i, dir) {
     this.props.movePlayer(i, dir);
   }
-  handleRemove(i, dir) {
-    //TODO: action creator here for remove a player
+  handleRemove(i) {
+    this.props.removePlayer(i);
   }
   render() {
     if (!this.props.players) {
@@ -37,7 +37,9 @@ function mapStateToProps(state) {
     players: state.players
   };
 }
-export default connect(mapStateToProps, { movePlayer })(AddedPlayers);
+export default connect(mapStateToProps, { movePlayer, removePlayer })(
+  AddedPlayers
+);
 
 // if(!players){
 //   return  <div> Please Add players </div>
