@@ -5,7 +5,7 @@ import {
   TURN_ERROR,
   MOVE_PLAYER
 } from "../actions";
-
+import _ from "lodash";
 class Player {
   constructor(name) {
     this.name = name;
@@ -23,8 +23,18 @@ class Player {
 export default function(state = [], action) {
   switch (action.type) {
     case ADD_PLAYER:
-      const player = new Player(action.payload);
-      return [...state, player];
+      console.log("STATE: ", state, "ACTION.PAYLOAD: ", action.payload);
+      let name = action.payload;
+      name = name.trim();
+      if (name.length === 0) {
+        return state;
+      } else if (_.find(state, { name })) {
+        console.log("PLAYER EXISTS: ");
+        return state;
+      } else {
+        const player = new Player(action.payload);
+        return [...state, player];
+      }
     case MOVE_PLAYER:
       //will need to do a decent amount of logic here for updating laingestRoad and the such
       let newPlayers = state.slice();

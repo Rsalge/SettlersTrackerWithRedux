@@ -20,7 +20,7 @@ class CurrentGame extends Component {
     if (!this.props.game || !this.props.game.players)
       return <div> Loading... </div>;
     return (
-      <div>
+      <div className="currentGame">
         CURRENT GAME
         <CurrentPlayer />
         <PlayerList />
