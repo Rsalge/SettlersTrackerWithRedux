@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Subheader = () => {
+const Menu = () => {
   return (
-    <div className="subheader">
+    <div className="menu">
       <Link to="/"> Home </Link>
       <Link to="/newGame"> New Game </Link>
       <Link to="/previousGames"> Previous Games </Link>
@@ -12,4 +12,4 @@ const Subheader = () => {
   );
 };
 
-export default Subheader;
+export default Menu;

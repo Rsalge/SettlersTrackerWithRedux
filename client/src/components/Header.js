@@ -1,10 +1,10 @@
 import React from "react";
-import Subheader from "./Subheader";
+import Menu from "./Menu";
 const Header = () => {
   return (
     <div className="header">
-      <h3>Settlers tracker!</h3>
-      <Subheader />
+      <h3>Settlers Tracker!</h3>
+      <Menu />
     </div>
   );
 };
