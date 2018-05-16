@@ -3,7 +3,7 @@ import Menu from "./Menu";
 const Header = () => {
   return (
     <div className="header">
-      <h3>Settlers Tracker!</h3>
+      <div>Settlers Tracker!</div>
       <Menu />
     </div>
   );

@@ -18,6 +18,7 @@ class Player {
     this.turnNumber = 1;
     this.diceRoll = 7;
     this.newLand = 0;
+    this.color = "";
   }
 }
 

@@ -17,7 +17,7 @@ class NewGame extends Component {
     console.log("GAME INFO INSIDE OF NEW GAME", this.props.game);
     return (
       <div className="NewGame">
-        New Game!
+        <h3>Enter player names below and select their color!</h3>
         <AddPlayer />
         <AddedPlayers players={this.props.players} />
         <StartGame history={this.props.history} />
