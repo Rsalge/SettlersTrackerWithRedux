@@ -8,7 +8,7 @@ import {
 } from "../actions";
 import _ from "lodash";
 class Player {
-  constructor(name) {
+  constructor(name, color) {
     this.name = name;
     this.settlements = 2;
     this.cities = 0;
@@ -18,7 +18,7 @@ class Player {
     this.turnNumber = 1;
     this.diceRoll = 7;
     this.newLand = 0;
-    this.color = "";
+    this.color = color;
   }
 }
 
@@ -26,7 +26,7 @@ export default function(state = [], action) {
   switch (action.type) {
     case ADD_PLAYER:
       console.log("STATE: ", state, "ACTION.PAYLOAD: ", action.payload);
-      let name = action.payload;
+      let name = action.payload.name;
       name = name.trim();
       if (name.length === 0) {
         return state;
@@ -34,7 +34,7 @@ export default function(state = [], action) {
         console.log("PLAYER EXISTS: ");
         return state;
       } else {
-        const player = new Player(action.payload);
+        const player = new Player(name, action.payload.color);
         return [...state, player];
       }
     case MOVE_PLAYER:

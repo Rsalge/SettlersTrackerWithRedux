@@ -18,6 +18,10 @@ class AddedPlayers extends Component {
         {this.props.players.map((player, i) => (
           <div className="addedPlayer" key={player.name}>
             <div className="addedPlayerName">{player.name}</div>
+            <div
+              className="selectColor"
+              style={{ backgroundColor: player.color }}
+            />
             <div className="addedPlayerMove">
               <button onClick={() => this.handleMove(i, 1)}>Down </button>
               <button onClick={() => this.handleMove(i, -1)}>Up </button>

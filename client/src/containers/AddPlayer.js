@@ -7,23 +7,32 @@ class AddPlayer extends Component {
     super(props);
     this.state = {
       player: "",
-      color: "",
+      color: "red",
       displayColorPicker: false
     };
   }
   render() {
     console.log("THIS is the color: ", this.state.color);
-
+    let colors = [
+      "#EEF3F0",
+      "#FF0F0F",
+      "#0F13FF",
+      "#188b52",
+      "#F87A04",
+      "#8B572A",
+      "#EAEE12",
+      "#ba68c8"
+    ];
     return (
       <div className="addPlayer">
         <form
           className="addPlayerForm"
           onSubmit={e => {
             e.preventDefault();
-            this.props.addPlayer(this.state.player);
+            this.props.addPlayer(this.state.player, this.state.color);
             this.setState({ player: "" });
           }}
-          style={{position: 'relative'}}
+          style={{ position: "relative" }}
         >
           <input
             type="text"
@@ -33,21 +42,30 @@ class AddPlayer extends Component {
           />
           <div
             className="selectColor"
+            style={{ backgroundColor: this.state.color }}
             onClick={() =>
               this.setState({
                 displayColorPicker: !this.state.displayColorPicker
               })
             }
-          >
-            Pick Color
-          </div>
+          />
           {this.state.displayColorPicker && (
-            <div style={{ position: "absolute", zIndex: "2", top:'30px' }}>
-              <div 
-                style={{position: 'fixed', top: '0px', right: '0px', bottom: '0px', left: '0px' }} 
-                onClick={() => this.setState({displayColorPicker: false})}
+            <div style={{ position: "absolute", zIndex: "2", top: "30px" }}>
+              <div
+                style={{
+                  position: "fixed",
+                  top: "0px",
+                  right: "0px",
+                  bottom: "0px",
+                  left: "0px"
+                }}
+                onClick={() => this.setState({ displayColorPicker: false })}
               />
-              <TwitterPicker onChange={color => this.setState({ color })} triangle={"hide"} />
+              <TwitterPicker
+                onChange={color => this.setState({ color: color.hex })}
+                triangle={"hide"}
+                colors={colors}
+              />
             </div>
           )}
           <div className="colorSquare" />

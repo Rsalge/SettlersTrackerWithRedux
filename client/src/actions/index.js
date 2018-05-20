@@ -10,7 +10,8 @@ export const TURN_ERROR = "turn_error";
 export const MOVE_PLAYER = "move_player";
 export const REMOVE_PLAYER = "remove_player";
 
-export function addPlayer(player) {
+export function addPlayer(name, color) {
+  let player = { name, color };
   return {
     type: ADD_PLAYER,
     payload: player
