@@ -31,8 +31,8 @@ class AddPlayer extends Component {
             onChange={e => this.setState({ player: e.target.value })}
             placeholder="Player name"
           />
-          <button
-            type="selectColor"
+          <div
+            className="selectColor"
             onClick={() =>
               this.setState({
                 displayColorPicker: !this.state.displayColorPicker
@@ -40,10 +40,13 @@ class AddPlayer extends Component {
             }
           >
             Pick Color
-          </button>
+          </div>
           {this.state.displayColorPicker && (
             <div style={{ position: "absolute", zIndex: "2", top:'30px' }}>
-            <div style={{position: 'fixed', top: '0px', right: '0px', bottom: '0px', left: '0px' }} onClick={() => this.setState({displayColorPicker: false})}/>
+              <div 
+                style={{position: 'fixed', top: '0px', right: '0px', bottom: '0px', left: '0px' }} 
+                onClick={() => this.setState({displayColorPicker: false})}
+              />
               <TwitterPicker onChange={color => this.setState({ color })} triangle={"hide"} />
             </div>
           )}
