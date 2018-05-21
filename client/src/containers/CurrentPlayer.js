@@ -9,7 +9,7 @@ class CurrentPlayer extends Component {
     const fields = Object.keys(player);
 
     return (
-      <div className="currentPlayer">
+      <div className="currentPlayer" style={{ backgroundColor: player.color }}>
         <FieldList player={player} fields={fields} editable={true} />
       </div>
     );
