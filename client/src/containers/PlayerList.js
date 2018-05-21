@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { fetchPlayers } from "../actions";
 import Player from "./Player";
+import CurrentPlayer from "./CurrentPlayer";
 
 class PlayerList extends Component {
-  // componentDidMount() {
-  //   this.props.fetchPlayers(this.props.game.title);
-  // }
+  componentDidMount() {
+    this.props.fetchPlayers(this.props.game.title);
+  }
   render() {
-    console.log("PLAYER LIST", this.props.players);
+    console.log("PLAYER LIST: ", this.props.players);
+
     return (
       <div>
         {this.props.players.map((player, i) => {
           if (i !== this.props.game.currentPlayer) {
             return <Player key={player.name} player={player} index={i} />;
+          } else {
+            return <CurrentPlayer />;
           }
         })}
       </div>
@@ -26,4 +31,4 @@ function mapStateToProps(state) {
     game: state.game
   };
 }
-export default connect(mapStateToProps)(PlayerList);
+export default connect(mapStateToProps, { fetchPlayers })(PlayerList);

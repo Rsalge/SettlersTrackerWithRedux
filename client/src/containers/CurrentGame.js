@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import CurrentPlayer from "../containers/CurrentPlayer";
 import { fetchGame } from "../actions";
 import PlayerList from "./PlayerList";
 
@@ -22,7 +21,6 @@ class CurrentGame extends Component {
     return (
       <div className="currentGame">
         CURRENT GAME
-        <CurrentPlayer />
         <PlayerList />
       </div>
     );
