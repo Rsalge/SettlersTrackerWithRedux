@@ -21,7 +21,9 @@ export default function(state = {}, action) {
     case UPDATE_SCOREBOARD:
       let newState = Object.assign({}, state);
       let players = newState.players;
-      findLongestRoad(newState);
+      findLargest(newState, "roadLength", "longestRoad");
+      findLargest(newState, "knights", "largestArmy");
+      findLargest(newState, "harbors", "harborMaster");
       console.log("UPDATING SCOREBOARD: ", newState);
       return newState;
     default:
@@ -29,23 +31,18 @@ export default function(state = {}, action) {
   }
 }
 
-const findLongestRoad = newState => {
+const findLargest = (newState, playerField, stateField) => {
   let players = newState.players;
   players.forEach(player => {
-    console.log(
-      "PLayer INFO",
-      player.roadLength,
-      "\nLongest Road: ",
-      newState.longestRoad.count
-    );
+    console.log("PLayer FIELD INFO", player[playerField]);
 
-    if (player.roadLength > newState.longestRoad.count) {
-      newState.longestRoad.count = player.roadLength;
-      newState.longestRoad.name = player.name;
-    } else if (player.name === newState.longestRoad.name) {
-      if (player.roadLength < newState.longestRoad.count) {
-        newState.longestRoad.count = player.roadLength;
-        findLongestRoad(newState);
+    if (player[playerField] > newState[stateField].count) {
+      newState[stateField].count = player[playerField];
+      newState[stateField].name = player.name;
+    } else if (player.name === newState[stateField].name) {
+      if (player[playerField] < newState[stateField].count) {
+        newState[stateField].count = player[playerField];
+        findLargest(newState);
       }
     }
   });
