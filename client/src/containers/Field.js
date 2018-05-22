@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { changeField } from "../actions";
+import { changeField, updateScoreBoard } from "../actions";
 import house from "../svgs/house.svg";
 import city from "../svgs/city.svg";
 import road from "../svgs/road.svg";
@@ -8,6 +8,7 @@ import knight from "../svgs/knight.svg";
 import dice from "../svgs/dice.svg";
 import plusOne from "../svgs/plusOne.svg";
 import harbors from "../svgs/harbors.svg";
+import ControlledField from "../components/Field_Controlled";
 
 const svgs = {
   settlements: house,
@@ -26,16 +27,17 @@ class Field extends Component {
       field: this.props.title,
       value
     });
+    this.props.updateScoreBoard();
   }
   render() {
     if (this.props.editable) {
       return (
-        <div className="field">
-          <img src={svgs[this.props.title]} alt={this.props.title} />
-          <button onClick={this.handleClick.bind(this, 1)}>Up</button>
-          <p>{this.props.value}</p>
-          <button onClick={this.handleClick.bind(this, -1)}>Down</button>
-        </div>
+        <ControlledField
+          src={svgs[this.props.title]}
+          alt={this.props.title}
+          value={this.props.value}
+          onClick={this.handleClick.bind(this)}
+        />
       );
     } else if (this.props.leading) {
       return (
@@ -67,4 +69,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { changeField })(Field);
+export default connect(mapStateToProps, { changeField, updateScoreBoard })(
+  Field
+);

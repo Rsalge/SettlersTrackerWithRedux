@@ -17,7 +17,7 @@ class PlayerList extends Component {
           if (i !== this.props.game.currentPlayer) {
             return <Player key={player.name} player={player} index={i} />;
           } else {
-            return <CurrentPlayer />;
+            return <CurrentPlayer key={player.name} />;
           }
         })}
       </div>

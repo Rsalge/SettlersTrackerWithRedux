@@ -16,7 +16,7 @@ class AddPlayer extends Component {
     let colors = [
       "#EEF3F0",
       "#FF0F0F",
-      "#0F13FF",
+      "#4c88ff",
       "#188b52",
       "#F87A04",
       "#8B572A",

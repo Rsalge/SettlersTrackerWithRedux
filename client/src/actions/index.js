@@ -9,6 +9,7 @@ export const NEXT_TURN = "next_turn";
 export const TURN_ERROR = "turn_error";
 export const MOVE_PLAYER = "move_player";
 export const REMOVE_PLAYER = "remove_player";
+export const UPDATE_SCOREBOARD = "update_scoreboard";
 
 export function addPlayer(name, color) {
   let player = { name, color };
@@ -107,5 +108,12 @@ export function removePlayer(i) {
   return {
     type: REMOVE_PLAYER,
     payload: i
+  };
+}
+
+export function updateScoreBoard() {
+  return {
+    type: UPDATE_SCOREBOARD,
+    payload: true
   };
 }

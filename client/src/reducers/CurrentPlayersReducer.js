@@ -63,11 +63,9 @@ export default function(state = [], action) {
     case GET_PLAYERS:
       return action.payload.data.players;
     case CHANGE_FIELD:
-      console.log("CHANGE_FIELD: ", action.payload);
       let newState = state.slice();
       newState[action.payload.player][action.payload.field] +=
         action.payload.value;
-      console.log("newState", newState);
       return newState;
     default:
       return state;

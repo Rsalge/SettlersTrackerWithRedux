@@ -10,7 +10,7 @@ const FieldList = props => {
       <Field key="VP" title="VPs" value={VP} />
       <Field key="turnNumber" title="Turn" value={props.player.turnNumber} />
       {props.fields.map(field => {
-        if (field !== "name" && field !== "turnNumber")
+        if (field !== "name" && field !== "turnNumber" && field !== "color")
           return (
             <Field
               key={field}
