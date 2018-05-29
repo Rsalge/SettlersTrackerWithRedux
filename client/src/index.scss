@@ -136,11 +136,32 @@ a:hover {
   display: flex;
   flex-basis: 20px;
   height: 200px;
+  flex-direction: column;
+  width: 80vw;
+  justify-content: space-between;
 }
 
 .gameList > * {
   padding: 10px;
   height: 50px;
+}
+
+.previousGamesListLink {
+  color: white;
+  text-decoration: none;
+  font-size: 2vw;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 5px 5px;
+  margin: 10px 10px;
+}
+.previousGamesListHeader {
+  display: flex;
+  justify-content: space-around;
+}
+
+.previousGamesListGame {
+  display: flex;
+  justify-content: space-around;
 }
 
 .fieldList {
