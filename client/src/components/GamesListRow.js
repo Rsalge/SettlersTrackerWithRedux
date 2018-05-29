@@ -11,7 +11,7 @@ const GamesListRow = ({ game }) => {
   let time = game.date.slice(11, 16);
   let date = `${month}/${day}/${year}  ${time}`;
   return (
-    <tr key={game.title} className="previousGamesListGame">
+    <tr key={game.title} className="previousGamesListRow">
       <td>
         <Link className="previousGamesListLink" to={`/games/${game.title}`}>
           {game.title}

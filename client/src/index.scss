@@ -147,21 +147,33 @@ a:hover {
 }
 
 .previousGamesListLink {
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: 2vw;
-  background: rgba(0, 0, 0, 0.2);
+  background: none;
   padding: 5px 5px;
   margin: 10px 10px;
+  text-decoration: underline;
 }
 .previousGamesListHeader {
   display: flex;
   justify-content: space-around;
 }
 
-.previousGamesListGame {
+.previousGamesListRow {
   display: flex;
   justify-content: space-around;
+}
+
+.previousGamesListRow > * {
+  border: 1px solid black;
+  width: 25%;
+  font-family: "Times New Roman", Times, serif;
+  color: black;
+  text-decoration: none;
+  font-size: 2vw;
+  background: none;
+  padding: 20px 5px;
 }
 
 .fieldList {
