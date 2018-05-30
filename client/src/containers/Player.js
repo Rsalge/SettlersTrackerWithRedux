@@ -5,7 +5,7 @@ const Player = props => {
   const fields = ["settlements", "cities", "roadLength"];
   return (
     <div className="player" style={{ backgroundColor: props.player.color }}>
-      <FieldList player={props.player} fields={fields} />
+      <FieldList game={props.game} player={props.player} fields={fields} />
     </div>
   );
 };

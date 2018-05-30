@@ -3,7 +3,7 @@ import NextTurn from "../containers/NextTurn";
 import Field from "../containers/Field";
 
 const FieldList = props => {
-  const VP = victoryPoints(props.player);
+  const VP = victoryPoints(props.player, props.game);
   return (
     <div className="fieldList">
       <Field leading={true} key="name" title={props.player.name} />
@@ -25,8 +25,19 @@ const FieldList = props => {
   );
 };
 
-const victoryPoints = player => {
-  return player.settlements + player.cities * 2 + player.newLand;
+const victoryPoints = (player, game) => {
+  let vp = 0;
+  if (game.longestRoad.name === player.name) {
+    vp += 2;
+  }
+  if (game.largestArmy.name === player.name) {
+    vp += 2;
+  }
+  if (game.harborMaster.name === player.name) {
+    vp += 2;
+  }
+  vp += player.settlements + player.cities * 2 + player.newLand;
+  return vp;
 };
 
 export default FieldList;

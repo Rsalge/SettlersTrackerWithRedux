@@ -3,16 +3,16 @@ import { connect } from "react-redux";
 import { nextTurn } from "../actions";
 
 class NextTurn extends Component {
-  handleClick() {
-    //action creator here
-  }
   render() {
     let turns = this.props.players;
     let game = this.props.game;
     game.players = turns;
     return (
       <div className="submitTurn">
-        <button onClick={() => this.props.nextTurn({ game })}>Submit</button>
+        <div
+          className="submitTurnButton"
+          onClick={() => this.props.nextTurn({ game })}
+        />
       </div>
     );
   }

@@ -10,7 +10,12 @@ class CurrentPlayer extends Component {
 
     return (
       <div className="currentPlayer" style={{ backgroundColor: player.color }}>
-        <FieldList player={player} fields={fields} editable={true} />
+        <FieldList
+          game={this.props.game}
+          player={player}
+          fields={fields}
+          editable={true}
+        />
       </div>
     );
   }
