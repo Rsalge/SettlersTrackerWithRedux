@@ -34,15 +34,13 @@ export default function(state = {}, action) {
 const findLargest = (newState, playerField, stateField) => {
   let players = newState.players;
   players.forEach(player => {
-    console.log("PLayer FIELD INFO", player[playerField]);
-
     if (player[playerField] > newState[stateField].count) {
       newState[stateField].count = player[playerField];
       newState[stateField].name = player.name;
     } else if (player.name === newState[stateField].name) {
       if (player[playerField] < newState[stateField].count) {
         newState[stateField].count = player[playerField];
-        findLargest(newState);
+        findLargest(newState, playerField, stateField);
       }
     }
   });
