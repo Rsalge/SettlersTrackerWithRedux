@@ -21,7 +21,6 @@ class CurrentGame extends Component {
       return <div> Loading... </div>;
     return (
       <div className="currentGame">
-        CURRENT GAME
         <ScoreBoard />
         <PlayerList />
       </div>
