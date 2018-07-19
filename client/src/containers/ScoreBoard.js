@@ -21,15 +21,7 @@ class ScoreBoard extends Component {
       </div>
     );
   }
-  renderDiceCount() {
-    let { pastTurns } = this.props.game;
-    let rolls = {};
-    pastTurns.forEach(({ diceRoll }) => {
-      rolls[diceRoll] === undefined ? (rolls[diceRoll] = 1) : rolls[diceRoll]++;
-    });
-    //TODO: return html elements for each dice roll
-    console.log("Rolls: ", rolls);
-  }
+
   render() {
     return (
       <div className="scoreBoard">
@@ -38,7 +30,6 @@ class ScoreBoard extends Component {
           <div className="longestRoad">{this.renderTitle("longestRoad")}</div>
           <div className="largestArmy">{this.renderTitle("largestArmy")}</div>
           <div className="harborMaster">{this.renderTitle("harborMaster")}</div>
-          <div className="diceCount">{this.renderDiceCount()}</div>
         </div>
       </div>
     );

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchGame } from "../actions";
 import PlayerList from "./PlayerList";
 import ScoreBoard from "./ScoreBoard";
+import DiceTracker from "../components/DiceTracker";
 
 class CurrentGame extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class CurrentGame extends Component {
     return (
       <div className="currentGame">
         <ScoreBoard />
+        <DiceTracker game={this.props.game} />
         <PlayerList />
       </div>
     );
