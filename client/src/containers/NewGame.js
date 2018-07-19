@@ -15,6 +15,8 @@ class NewGame extends Component {
 
   render() {
     console.log("GAME INFO INSIDE OF NEW GAME", this.props.game);
+    console.log("PLAYER INFO INSIDE OF NEW GAME", this.props.players);
+
     return (
       <div className="NewGame">
         <h3>Enter player names below and select their color!</h3>

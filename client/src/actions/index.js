@@ -69,7 +69,6 @@ export function changeField(fieldOptions) {
 }
 
 export function nextTurn(data) {
-  console.log("INFO SENT TO nextTurn: ", data.game);
   let game = data.game;
   let playerCount = game.players.length;
   let curPlayerIndex = game.currentPlayer;
@@ -81,8 +80,6 @@ export function nextTurn(data) {
     nextPlayer = 0;
   }
   game.currentPlayer = nextPlayer;
-  console.log("UPDATED GAME INFO SENT TO BE SAVED: ", game);
-
   let request = axios
     .put("/api/saveTurn", game) //{turns, title, }
     .then(game => {

@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addPlayer } from "../actions";
 import { TwitterPicker } from "react-color";
+import _ from "lodash";
+
 class AddPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       player: "",
-      color: "red",
-      displayColorPicker: false
+      color: "#ff0f0f",
+      displayColorPicker: false,
+      error: null
     };
   }
   render() {
@@ -25,12 +28,26 @@ class AddPlayer extends Component {
     ];
     return (
       <div className="addPlayer">
+        <h3 style={{ color: "black", textShadow: "2px 2px 8px #ff0000" }}>
+          {this.state.error && this.state.error}
+        </h3>
         <form
           className="addPlayerForm"
           onSubmit={e => {
             e.preventDefault();
-            this.props.addPlayer(this.state.player, this.state.color);
-            this.setState({ player: "" });
+            let error = null;
+            let color = this.state.color;
+            let player = this.state.player;
+            if (_.find(this.props.players, { name: player })) {
+              error = "Player name already exists";
+              player = "";
+            } else if (_.find(this.props.players, { color })) {
+              error = "Player color already chosen";
+            } else {
+              this.props.addPlayer(this.state.player, this.state.color);
+              player = "";
+            }
+            this.setState({ player, error });
           }}
           style={{ position: "relative" }}
         >
@@ -62,13 +79,14 @@ class AddPlayer extends Component {
                 onClick={() => this.setState({ displayColorPicker: false })}
               />
               <TwitterPicker
-                onChange={color => this.setState({ color: color.hex })}
+                onChange={color =>
+                  this.setState({ color: color.hex, displayColorPicker: false })
+                }
                 triangle={"hide"}
                 colors={colors}
               />
             </div>
           )}
-          <div className="colorSquare" />
           <button type="submit"> Add Player </button>
         </form>
       </div>
@@ -76,4 +94,10 @@ class AddPlayer extends Component {
   }
 }
 
-export default connect(null, { addPlayer })(AddPlayer);
+function mapStateToProps(state) {
+  return {
+    players: state.players
+  };
+}
+
+export default connect(mapStateToProps, { addPlayer })(AddPlayer);

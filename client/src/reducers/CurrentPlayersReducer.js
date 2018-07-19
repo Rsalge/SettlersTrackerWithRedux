@@ -27,11 +27,9 @@ export default function(state = [], action) {
     case ADD_PLAYER:
       console.log("STATE: ", state, "ACTION.PAYLOAD: ", action.payload);
       let name = action.payload.name;
+      let color = action.payload.color;
       name = name.trim();
       if (name.length === 0) {
-        return state;
-      } else if (_.find(state, { name })) {
-        console.log("PLAYER EXISTS: ");
         return state;
       } else {
         const player = new Player(name, action.payload.color);
