@@ -33,10 +33,13 @@ class DiceTracker extends Component {
 
     return (
       <div>
-        <h1>Dice count</h1>
+        <h1 style={{ width: "80vw", textAlign: "center" }}>Dice count</h1>
         <div className="diceTracker">
           {Object.keys(rolls).map(roll => (
-            <div>{`Roll:${roll}  Count: ${rolls[roll]}`}</div>
+            <div className="diceRoll">
+              <div>{roll}</div>
+              <div>{rolls[roll]}</div>
+            </div>
           ))}
         </div>
       </div>
