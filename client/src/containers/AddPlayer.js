@@ -15,7 +15,6 @@ class AddPlayer extends Component {
     };
   }
   render() {
-    console.log("THIS is the color: ", this.state.color);
     let colors = [
       "#EEF3F0",
       "#FF0F0F",

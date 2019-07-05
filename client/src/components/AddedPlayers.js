@@ -45,6 +45,3 @@ export default connect(mapStateToProps, { movePlayer, removePlayer })(
   AddedPlayers
 );
 
-// if(!players){
-//   return  <div> Please Add players </div>
-// }

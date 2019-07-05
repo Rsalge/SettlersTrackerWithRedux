@@ -14,8 +14,6 @@ class NewGame extends Component {
   }
 
   render() {
-    console.log("GAME INFO INSIDE OF NEW GAME", this.props.game);
-    console.log("PLAYER INFO INSIDE OF NEW GAME", this.props.players);
 
     return (
       <div className="NewGame">

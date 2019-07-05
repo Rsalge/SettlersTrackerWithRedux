@@ -10,20 +10,26 @@ class PlayerList extends Component {
   }
   render() {
     console.log("PLAYER LIST: ", this.props.players);
-
+    let players = [];
+    if (this.props.game.complete.staus) {
+      console.log("THIS IS A COMPLETED GAME");
+      players = this.props.game.pastTurns;
+    } else {
+      players = this.props.players;
+    }
     return (
       <div>
-        {this.props.players.map((player, i) => {
+        {players.map((player, i) => {
           if (i !== this.props.game.currentPlayer) {
             return (
               <Player
                 game={this.props.game}
-                key={player.name}
+                key={`${player.name}+${player.turnNumber}`}
                 player={player}
                 index={i}
               />
             );
-          } else {
+          } else if (!this.props.game.complete.status) {
             return <CurrentPlayer key={player.name} />;
           }
         })}
@@ -38,4 +44,7 @@ function mapStateToProps(state) {
     game: state.game
   };
 }
-export default connect(mapStateToProps, { fetchPlayers })(PlayerList);
+export default connect(
+  mapStateToProps,
+  { fetchPlayers }
+)(PlayerList);

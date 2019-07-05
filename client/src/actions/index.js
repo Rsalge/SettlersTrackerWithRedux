@@ -43,7 +43,6 @@ export function createGame(gameInfo, callback) {
 }
 
 export function fetchGame(title) {
-  console.log("ID PASSES INTO fetchGame ACTION: ", title);
   const request = axios.get(`/api/game`, { params: { title } });
 
   return {
@@ -61,7 +60,6 @@ export function fetchPlayers(title) {
 }
 
 export function changeField(fieldOptions) {
-  console.log("CHANGE FIELD ACTION");
   return {
     type: CHANGE_FIELD,
     payload: fieldOptions
