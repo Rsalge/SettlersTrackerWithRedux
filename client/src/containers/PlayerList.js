@@ -9,10 +9,9 @@ class PlayerList extends Component {
     this.props.fetchPlayers(this.props.game.title);
   }
   render() {
-    console.log("PLAYER LIST: ", this.props.players);
+
     let players = [];
     if (this.props.game.complete.staus) {
-      console.log("THIS IS A COMPLETED GAME");
       players = this.props.game.pastTurns;
     } else {
       players = this.props.players;

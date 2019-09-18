@@ -4,15 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":
-      "concurrently \"cd server && DEV=true nodemon index.js\" \"cd client && npm start\"",
-    "build":
-      "cd client && npm install --only=dev && npm install && npm run build",
-    "heroku-postbuild":
-      "cd client && npm install --only=dev && npm install && npm run build",
+    "start": "concurrently \"cd server && DEV=true nodemon index.js\" \"cd client && npm start\"",
+    "build": "cd client && npm install --only=dev && npm install && npm run build",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "setup": "npm install && cd client && npm install"
   },
-  "cacheDirectories": ["node_modules", "client/node_modules"],
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -21,6 +21,6 @@
     "concurrently": "^3.5.0",
     "dotenv": "^5.0.1",
     "express": "^4.15.4",
-    "mongoose": "^5.0.16"
+    "mongoose": "^5.7.1"
   }
 }

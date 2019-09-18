@@ -12,10 +12,12 @@ class CurrentGame extends Component {
       currentPlayer: 0
     };
   }
+
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchGame(id);
   }
+
   render() {
     if (!this.props.game || !this.props.game.players)
       return <div> Loading... </div>;

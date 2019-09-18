@@ -36,12 +36,11 @@ router.get("/players", (req, res) => {
   const title = req.query.title;
   Game.getPlayers(title)
     .then(game => {
-      // console.log("PLAYER INFORMATION: ", game.players);
       res.send({ players: game.players });
     })
     .catch(err => {
       console.log("GAME FETCHING ERROR: ", err);
-      res.status(404).send({ error: " get(/player) error" });
+      res.status(404).send({ error: {message: "get(/player) error", error: err}});
     });
 });
 
