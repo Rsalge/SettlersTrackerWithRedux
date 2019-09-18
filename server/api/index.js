@@ -46,14 +46,11 @@ router.get("/players", (req, res) => {
 });
 
 router.put("/saveTurn", (req, res) => {
-  console.log("IN /saveTurn: ", req.body);
   Game.saveTurn(req.body)
     .then(data => {
-      console.log("SUCCESSFULLY SAVED TURN: ", data);
       res.status(200).send(req.body);
     })
     .catch(err => {
-      console.log("SAVE TURN ERROR: ", err);
       res.status(501).send({ message: err });
     });
 });

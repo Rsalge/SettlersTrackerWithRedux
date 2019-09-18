@@ -57,7 +57,6 @@ Game.getGame = title => {
 };
 
 Game.createGame = ({ title, players }) => {
-  console.log("TITLE: ", title, "\nPLAYERS: ", players);
   let game = new Game({ title, players });
   let error = false;
   return game.save();

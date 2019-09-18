@@ -26,10 +26,6 @@ class DiceTracker extends Component {
 
   render() {
     let rolls = this.getRolls();
-    console.log("DICETRACKER rolls: ", rolls);
-    for (let roll in rolls) {
-      console.log("Roll key: ", roll, "Roll value: ", rolls[roll]);
-    }
 
     return (
       <div>
