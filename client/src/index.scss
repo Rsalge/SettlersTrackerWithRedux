@@ -207,6 +207,12 @@ a:hover {
   align-items: center;
   justify-content: center;
   width: 80vw;
+  background-color: #cc5500;
+  border-radius: 10px;
+
+  // z-index: 1;
+  // //position: -webkit-sticky;
+  // position: sticky;
 }
 
 .diceRoll {

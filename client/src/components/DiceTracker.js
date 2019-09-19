@@ -2,6 +2,16 @@ import React, { Component } from "react";
 import _ from "lodash";
 
 class DiceTracker extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      height: 0,
+      elementHeight: null
+    };
+    this.handleScroll = this.handleScroll.bind(this);
+    this.getHeight = this.getHeight.bind(this);
+  }
+
   getRolls() {
     let { pastTurns } = this.props.game;
     let rolls = {
@@ -24,11 +34,43 @@ class DiceTracker extends Component {
     return rolls;
   }
 
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
+
+  handleScroll(event) {
+    let scrollTop = window.scrollY;
+    let height = Math.max(0, scrollTop / 3);
+    console.log(window.scrollY);
+    this.setState({
+      height: height
+    });
+  }
+
+  getHeight(element) {
+    if (element && !this.state.elementHeight) {
+      this.setState({ elementHeight: element.clientHeight + 50 });
+    }
+  }
+
   render() {
+    console.log("this.state.element hegith", this.state.elementHeight);
+    console.log("this.state.highth", this.state.height);
     let rolls = this.getRolls();
+    let regularStyle = { position: "relative" };
+    let fixedStyle = { position: "fixed", height: "50px", top: "0px" };
+    let style = null;
+    if (
+      this.state.elementHeight &&
+      this.state.elementHeight < this.state.height
+    ) {
+      style = fixedStyle;
+    } else {
+      style = regularStyle;
+    }
 
     return (
-      <div>
+      <div ref={this.getHeight} style={style}>
         <h1 style={{ width: "80vw", textAlign: "center" }}>Dice count</h1>
         <div className="diceTracker">
           {Object.keys(rolls).map(roll => (

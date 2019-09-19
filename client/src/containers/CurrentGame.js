@@ -4,6 +4,7 @@ import { fetchGame } from "../actions";
 import PlayerList from "./PlayerList";
 import ScoreBoard from "./ScoreBoard";
 import DiceTracker from "../components/DiceTracker";
+import { StickyContainer, Sticky } from "react-sticky";
 
 class CurrentGame extends Component {
   constructor(props) {
