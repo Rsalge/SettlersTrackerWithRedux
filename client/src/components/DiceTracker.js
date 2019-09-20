@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import _ from "lodash";
 import oneDie from "../svgs/dice-six-faces-one.svg";
 import DicePair from "./enums/DicePair";
+import DicePercentage from "./enums/DicePercentage";
 
 class DiceTracker extends Component {
   constructor(props) {
     super(props);
     this.state = {
       height: 0,
-      elementHeight: null
+      elementHeight: false
     };
     this.handleScroll = this.handleScroll.bind(this);
     this.getHeight = this.getHeight.bind(this);
@@ -38,15 +39,29 @@ class DiceTracker extends Component {
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+    // if (!this.state.elementHeight) {
+    //   this.setState({ elementHeight: window.scrollY });
+    // }
   }
 
   handleScroll(event) {
     let scrollTop = window.scrollY;
     let height = Math.max(0, scrollTop / 3);
-    console.log(window.scrollY);
-    this.setState({
-      height: height
-    });
+    if (
+      height < this.state.elementHeight + 10 &&
+      height > this.state.elementHeight
+    ) {
+      this.setState({
+        height: height
+      });
+    } else if (
+      height > this.state.elementHeight - 10 &&
+      height < this.state.elementHeight
+    ) {
+      this.setState({
+        height: height
+      });
+    }
   }
 
   getHeight(element) {
@@ -84,12 +99,17 @@ class DiceTracker extends Component {
       <div ref={this.getHeight} style={style}>
         <div className="diceTracker">
           <h1 style={{ width: "80vw", textAlign: "center" }}>Dice count</h1>
-          {Object.keys(rolls).map((roll, index) => (
-            <div className="diceRoll">
-                <DicePair number={index + 2} />
-              <div>{rolls[roll]}</div>
-            </div>
-          ))}
+          {Object.keys(rolls).map((roll, index) => {
+            let diceNumber = index + 2;
+            return (
+              <div className="diceRoll">
+                <div>{DicePercentage[diceNumber]}</div>
+                <DicePair number={diceNumber} />
+                <div className="diceRollNumber">{rolls[roll]}</div>
+                <div>{calcCurrentDicePercentage(diceNumber)}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
     );

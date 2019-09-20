@@ -209,10 +209,7 @@ a:hover {
   width: 80vw;
   background-color: #cc5500;
   border-radius: 10px;
-
-  // z-index: 1;
-  // //position: -webkit-sticky;
-  // position: sticky;
+  padding: 1vw;
 }
 
 .diceRoll {
@@ -220,7 +217,11 @@ a:hover {
   margin: 1vh;
 }
 
-.dicePair > * {
+.diceRollNumber {
+  padding: 0.5vw;
+}
+
+.dicePair > img {
   max-width: 1.5vw;
   max-height: 1.5vw;
   min-width: 1.5vw;

@@ -67,8 +67,6 @@ Game.getPlayers = title => {
 };
 
 Game.saveTurn = data => {
-  console.log("INSIDE SAVE TURN: ", data);
-
   return Game.findOneAndUpdate({ title: data.title }, { $set: data }).exec();
 };
 
