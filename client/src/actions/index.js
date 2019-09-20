@@ -67,19 +67,21 @@ export function changeField(fieldOptions) {
 }
 
 export function nextTurn(data) {
-  let game = data.game;
+  let { game } = data;
   let playerCount = game.players.length;
   let curPlayerIndex = game.currentPlayer;
-  let curPlayer = game.players[curPlayerIndex];
-  game.pastTurns.push(curPlayer);
-  curPlayer.turnNumber++;
+  let currentPlayerTurnInfo = game.players[curPlayerIndex];
+
+  game.pastTurns.push(currentPlayerTurnInfo);
+  currentPlayerTurnInfo.turnNumber++;
+  
   let nextPlayer = curPlayerIndex + 1;
   if (nextPlayer >= playerCount) {
     nextPlayer = 0;
   }
   game.currentPlayer = nextPlayer;
   let request = axios
-    .put("/api/saveTurn", game) //{turns, title, }
+    .put("/api/saveTurn", game)
     .then(game => {
       return game.data;
     })
