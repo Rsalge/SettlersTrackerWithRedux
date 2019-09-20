@@ -6,7 +6,6 @@ const FieldList = props => {
   const VP = victoryPoints(props.player, props.game);
   return (
     <div className="fieldList">
-      <Field leading={true} key="name" title={props.player.name} />
       <Field key="VP" title="VPs" value={VP} />
       <Field key="turnNumber" title="Turn" value={props.player.turnNumber} />
       {props.fields.map(field => {

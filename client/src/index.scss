@@ -216,8 +216,25 @@ a:hover {
 }
 
 .diceRoll {
-  margin: 10px;
   text-align: center;
+  margin: 1vh;
+}
+
+.dicePair > * {
+  max-width: 1.5vw;
+  max-height: 1.5vw;
+  min-width: 1.5vw;
+  min-height: 1.5vw;
+  margin: 0.2vw;
+}
+
+.dicePair {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  padding: 1vw;
 }
 
 .leadingField {

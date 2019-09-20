@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import _ from "lodash";
+import oneDie from "../svgs/dice-six-faces-one.svg";
+import DicePair from "./enums/DicePair";
 
 class DiceTracker extends Component {
   constructor(props) {
@@ -60,7 +62,7 @@ class DiceTracker extends Component {
     let regularStyle = {
       position: "relative",
       backgroundColor: "#cc5500",
-      borderRadius: "10px",
+      borderRadius: "10px"
     };
     let fixedStyle = {
       position: "fixed",
@@ -80,11 +82,11 @@ class DiceTracker extends Component {
 
     return (
       <div ref={this.getHeight} style={style}>
-        <h1 style={{ width: "80vw", textAlign: "center" }}>Dice count</h1>
         <div className="diceTracker">
-          {Object.keys(rolls).map(roll => (
+          <h1 style={{ width: "80vw", textAlign: "center" }}>Dice count</h1>
+          {Object.keys(rolls).map((roll, index) => (
             <div className="diceRoll">
-              <div>{roll}</div>
+                <DicePair number={index + 2} />
               <div>{rolls[roll]}</div>
             </div>
           ))}

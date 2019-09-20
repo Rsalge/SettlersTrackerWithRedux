@@ -11,6 +11,7 @@ const Player = props => {
   ];
   return (
     <div className="player" style={{ backgroundColor: props.player.color }}>
+      <h1 className="leadingField">{props.player.name}</h1>
       <FieldList game={props.game} player={props.player} fields={fields} />
     </div>
   );
