@@ -13,6 +13,7 @@ class DiceTracker extends Component {
     };
     this.handleScroll = this.handleScroll.bind(this);
     this.getHeight = this.getHeight.bind(this);
+    this.calcCurrentDicePercentage = this.calcCurrentDicePercentage.bind(this);
   }
 
   getRolls() {
@@ -70,6 +71,31 @@ class DiceTracker extends Component {
     }
   }
 
+  calcCurrentDicePercentage(diceNumber) {
+    let { pastTurns } = this.props.game;
+    let rolls = {
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0
+    };
+    let count = 0;
+    _.forEach(pastTurns, turn => {
+      count++;
+      let diceRoll = String(turn.diceRoll);
+      rolls[diceRoll]++;
+    });
+    let dicePercentage = ((rolls[diceNumber] / count) * 100).toString();
+    return Math.round(dicePercentage) + "%";
+  }
+
   render() {
     console.log("this.state.element hegith", this.state.elementHeight);
     console.log("this.state.highth", this.state.height);
@@ -106,7 +132,7 @@ class DiceTracker extends Component {
                 <div>{DicePercentage[diceNumber]}</div>
                 <DicePair number={diceNumber} />
                 <div className="diceRollNumber">{rolls[roll]}</div>
-                <div>{calcCurrentDicePercentage(diceNumber)}</div>
+                <div>{this.calcCurrentDicePercentage(diceNumber)}</div>
               </div>
             );
           })}
