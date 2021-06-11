@@ -3,7 +3,8 @@ import {
   CREATE_GAME,
   NEXT_TURN,
   TURN_ERROR,
-  UPDATE_SCOREBOARD
+  UPDATE_SCOREBOARD,
+  DECLARE_WINNER
 } from "../actions";
 
 export default function(state = {}, action) {
@@ -26,6 +27,8 @@ export default function(state = {}, action) {
       findLargest(newState, "harbors", "harborMaster");
       console.log("UPDATING SCOREBOARD: ", newState);
       return newState;
+    case DECLARE_WINNER:
+      return action.payload;
     default:
       return state;
   }

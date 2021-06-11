@@ -11,7 +11,7 @@ class PlayerList extends Component {
   render() {
 
     let players = [];
-    if (this.props.game.complete.staus) {
+    if (this.props.game.complete.status) {
       players = this.props.game.pastTurns;
     } else {
       players = this.props.players;

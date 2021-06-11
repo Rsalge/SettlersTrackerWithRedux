@@ -16,14 +16,14 @@ const gameSchema = new mongoose.Schema({
     required: true
   },
   complete: {
-    staus: {
+    status: {
       type: Boolean,
       required: true,
       default: false
     },
     winner: {
       type: String,
-      required: true,
+      required: false,
       default: ""
     }
   },
@@ -67,6 +67,10 @@ Game.getPlayers = title => {
 };
 
 Game.saveTurn = data => {
+  return Game.findOneAndUpdate({ title: data.title }, { $set: data }).exec();
+};
+
+Game.declareWinner = data => {
   return Game.findOneAndUpdate({ title: data.title }, { $set: data }).exec();
 };
 

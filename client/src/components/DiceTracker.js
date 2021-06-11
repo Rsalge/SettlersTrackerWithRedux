@@ -97,8 +97,6 @@ class DiceTracker extends Component {
   }
 
   render() {
-    console.log("this.state.element hegith", this.state.elementHeight);
-    console.log("this.state.highth", this.state.height);
     let rolls = this.getRolls();
     let regularStyle = {
       position: "relative",

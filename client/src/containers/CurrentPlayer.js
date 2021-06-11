@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import FieldList from "../components/FieldList";
+import { declareWinner } from "../actions";
 import Timer from "react-timer-wrapper";
 import Timecode from "react-timecode";
 
@@ -10,6 +11,8 @@ class CurrentPlayer extends Component {
       return <div>Loading current player stats</div>;
     const player = this.props.players[this.props.game.currentPlayer];
     const fields = Object.keys(player);
+    const game = this.props.game;
+    
 
     return (
       <div className="currentPlayer" style={{ backgroundColor: player.color }}>
@@ -28,6 +31,9 @@ class CurrentPlayer extends Component {
           fields={fields}
           editable={true}
         />
+        <div className="winner-btn">
+          <button onClick={() => this.props.declareWinner({ game })}>Declare Winner</button>
+        </div>
       </div>
     );
   }
@@ -39,4 +45,4 @@ function mapStateToProps(state) {
     game: state.game
   };
 }
-export default connect(mapStateToProps)(CurrentPlayer);
+export default connect(mapStateToProps, { declareWinner })(CurrentPlayer);

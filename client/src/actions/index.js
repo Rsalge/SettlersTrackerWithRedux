@@ -10,6 +10,7 @@ export const TURN_ERROR = "turn_error";
 export const MOVE_PLAYER = "move_player";
 export const REMOVE_PLAYER = "remove_player";
 export const UPDATE_SCOREBOARD = "update_scoreboard";
+export const DECLARE_WINNER = "declare_winner";
 
 export function addPlayer(name, color) {
   let player = { name, color };
@@ -112,5 +113,25 @@ export function updateScoreBoard() {
   return {
     type: UPDATE_SCOREBOARD,
     payload: true
+  };
+}
+
+export function declareWinner(data) {
+  let { game } = data;
+  game.complete.status = true;
+  game.complete.winner = game.players[game.currentPlayer].name;
+  console.log('declaring winner', game.players[game.currentPlayer].name)
+  
+  let request = axios
+    .put("/api/declareWinner", game)
+    .then(game => {
+      return game.data;
+    })
+    .catch(err => {
+      return err;
+    });
+  return {
+    type: DECLARE_WINNER,
+    payload: request
   };
 }

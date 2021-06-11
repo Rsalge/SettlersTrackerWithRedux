@@ -22,7 +22,7 @@ router.post("/createGame", (req, res) => {
   Game.createGame(req.body)
     .then(game => res.send(game))
     .catch(err => {
-      console.log("GAME CREATION ERROR", err.code);
+      console.log("GAME CREATION ERROR", err);
       if (err.code === 11000) {
         res
           .status(409)
@@ -46,6 +46,16 @@ router.get("/players", (req, res) => {
 
 router.put("/saveTurn", (req, res) => {
   Game.saveTurn(req.body)
+    .then(data => {
+      res.status(200).send(req.body);
+    })
+    .catch(err => {
+      res.status(501).send({ message: err });
+    });
+});
+
+router.put("/declareWinner", (req, res) => {
+  Game.declareWinner(req.body)
     .then(data => {
       res.status(200).send(req.body);
     })
