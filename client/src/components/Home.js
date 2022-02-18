@@ -7,11 +7,13 @@ const Home = () => {
       <p>
         The main purpose of this app is to track what dice have been rolled
         during a game of catan, at least that is what most interested me. In
-        addition to tracking each dice roll per turn you can also keep track of
+        addition to tracking each dice roll, you can also keep track of
         a players Victory Points (VP) by tracking the number of settlements,
         cities, roads, and ports a player has. Largest Army, Longest Road, and
         Harbor Master are additional objectives that award 2 VPs each and the
-        holder of each objective is tracked as well. Previously completed games
+        holder of each objective is tracked as well. There is also the ability 
+        to add an extra victory point for whatever custom rules you and your 
+        fiends may come up with. Previously completed games
         can be viewed under the Previous Games tab, allowing you to see the
         previous game stats. Just a fun way to keep up with how games went, who
         won, how many f***ing fours were rolled, etc.
